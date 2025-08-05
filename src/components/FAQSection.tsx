@@ -19,18 +19,35 @@ const FAQSection = () => {
           <p className="text-2xl text-light-gray">What does Sentinel do?</p>
         </div>
 
-        {/* FAQ Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {faqItems.map((question, index) => (
-            <div
-              key={index}
-              className="bg-[#222222] rounded-xl p-6 h-[200px] flex items-center justify-start border border-transparent hover:border-white/10 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
-            >
-              <p className="text-light-gray text-base leading-relaxed">
-                {question}
-              </p>
-            </div>
-          ))}
+        {/* FAQ Animation */}
+        <div className="space-y-6 overflow-hidden">
+          {/* Top Row - Sliding Left */}
+          <div className="flex gap-6 animate-scroll-left">
+            {[...faqItems.slice(0, 4), ...faqItems.slice(0, 4)].map((question, index) => (
+              <div
+                key={`top-${index}`}
+                className="bg-[#222222] rounded-xl p-6 h-[200px] w-[280px] flex-shrink-0 flex items-center justify-start border border-transparent hover:border-white/10 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
+              >
+                <p className="text-light-gray text-base leading-relaxed">
+                  {question}
+                </p>
+              </div>
+            ))}
+          </div>
+          
+          {/* Bottom Row - Sliding Right */}
+          <div className="flex gap-6 animate-scroll-right">
+            {[...faqItems.slice(4), ...faqItems.slice(4)].map((question, index) => (
+              <div
+                key={`bottom-${index}`}
+                className="bg-[#222222] rounded-xl p-6 h-[200px] w-[280px] flex-shrink-0 flex items-center justify-start border border-transparent hover:border-white/10 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
+              >
+                <p className="text-light-gray text-base leading-relaxed">
+                  {question}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

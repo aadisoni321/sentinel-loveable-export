@@ -13,7 +13,7 @@ const FooterSection = () => {
           {/* Logo Column */}
           <div>
             <div className="w-16 h-16 bg-electric-blue rounded-lg flex items-center justify-center mb-8">
-              <span className="text-pure-white text-2xl font-bold">7</span>
+              {/* No content - removed "7" */}
             </div>
           </div>
 

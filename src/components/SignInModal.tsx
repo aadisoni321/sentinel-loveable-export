@@ -87,14 +87,14 @@ const SignInModal = ({ isOpen, onClose }: SignInModalProps) => {
               <span className="text-[#4285F4] text-sm font-bold">G</span>
             </div>
             Login With Google
-            <span className="text-lg">&gt;</span>
+            <span className="text-lg">→</span>
           </button>
 
           {/* Sign Up Link */}
           <div className="text-center">
             <span className="text-light-gray">Don't have an Account? </span>
             <a href="#" className="text-electric-blue hover:text-blue-hover transition-colors duration-300">
-              Sign Up &gt;
+              Sign Up →
             </a>
           </div>
         </form>

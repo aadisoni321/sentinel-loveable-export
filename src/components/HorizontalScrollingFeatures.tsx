@@ -61,15 +61,14 @@ const HorizontalScrollingFeatures = () => {
         {/* Left Side - Fixed Title */}
         <div className="w-[400px] flex-shrink-0 flex items-center pl-20">
           <h2 className="text-5xl font-bold text-white leading-tight">
-            What You'll Unlock<br />
-            with Sentinel
+            What You'll Unlock with Sentinel
           </h2>
         </div>
 
         {/* Right Side - Scrolling Cards */}
         <div 
           ref={cardsRef}
-          className="flex items-center space-x-10 transition-transform duration-100 ease-out"
+          className="flex items-center space-x-10 transition-transform duration-50 ease-out"
           style={{ width: 'calc(4 * 400px + 3 * 40px)' }}
         >
           {features.map((feature, index) => (

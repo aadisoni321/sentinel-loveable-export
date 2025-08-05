@@ -6,7 +6,18 @@ const TypewriterEffect = () => {
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(100);
 
-  const words = ["Typewriter Effect"];
+  const words = [
+    "Cancel Subscriptions",
+    "Track Renewals", 
+    "Monitor Trials",
+    "Manage Billing",
+    "Stop Overcharges",
+    "Block Hidden Fees",
+    "Control Spending",
+    "End Renewals",
+    "Save Money",
+    "Protect Finances"
+  ];
   const currentWord = words[loopNum % words.length];
 
   useEffect(() => {

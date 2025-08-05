@@ -6,9 +6,9 @@ const PricingSection = () => {
 
   return (
     <section className="bg-pure-black py-[120px] px-4 md:px-8 lg:px-[120px] relative">
-      {/* Dot Grid Pattern Overlay */}
+      {/* Dot Grid Pattern Behind Heading Only */}
       <div 
-        className="absolute inset-0 opacity-10"
+        className="absolute top-[120px] left-1/2 transform -translate-x-1/2 w-[400px] h-[100px] opacity-10"
         style={{
           backgroundImage: `radial-gradient(circle at center, white 1px, transparent 1px)`,
           backgroundSize: '20px 20px'
@@ -83,7 +83,7 @@ const PricingSection = () => {
           </div>
 
           {/* Pro Plan */}
-          <div className="w-full lg:w-[400px] h-[600px] bg-[#2A2A2A] border-4 border-electric-blue rounded-2xl p-10 shadow-xl relative">
+          <div className="w-full lg:w-[400px] h-[600px] bg-[#2A2A2A] border border-electric-blue rounded-2xl p-10 shadow-xl relative">
             {/* Blue glow effect */}
             <div className="absolute -inset-1 bg-gradient-to-r from-electric-blue/20 to-blue-hover/20 rounded-2xl blur-sm" />
             <div className="relative bg-[#2A2A2A] rounded-2xl h-full p-0">

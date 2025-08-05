@@ -29,7 +29,7 @@ const HeroSection = ({ onGetStartedClick }: HeroSectionProps) => {
                 onClick={() => scrollToSection("features")}
                 className="text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors"
               >
-                Explore Now &gt;
+                Explore Now →
               </button>
             </div>
 
@@ -81,7 +81,7 @@ const HeroSection = ({ onGetStartedClick }: HeroSectionProps) => {
                 onClick={() => scrollToSection("pricing")}
                 className="text-blue-500 text-sm font-medium hover:underline transition-all duration-300"
               >
-                Get Sentinel &gt;
+                Get Sentinel →
               </button>
             </div>
           </div>
