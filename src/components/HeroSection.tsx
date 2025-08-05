@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import TypewriterEffect from "./TypewriterEffect";
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  onGetStartedClick: () => void;
+}
+
+const HeroSection = ({ onGetStartedClick }: HeroSectionProps) => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -65,7 +69,7 @@ const HeroSection = () => {
                 variant="outline"
                 size="lg"
                 className="btn-secondary px-8 py-4 rounded-xl font-semibold text-base w-40"
-                onClick={() => scrollToSection("signin")}
+                onClick={onGetStartedClick}
               >
                 Get Started
               </Button>

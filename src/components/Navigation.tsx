@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
-const Navigation = () => {
+interface NavigationProps {
+  onGetStartedClick: () => void;
+}
+
+const Navigation = ({ onGetStartedClick }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -60,7 +64,7 @@ const Navigation = () => {
               variant="outline"
               size="default"
               className="btn-secondary px-6 py-3 rounded-lg border-2"
-              onClick={() => scrollToSection("signin")}
+              onClick={onGetStartedClick}
             >
               Get Started
             </Button>
