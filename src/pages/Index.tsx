@@ -1,18 +1,37 @@
 import { useState } from "react";
+import Navigation from "@/components/Navigation";
+import HeroSection from "@/components/HeroSection";
+import VideoHeroSection from "@/components/VideoHeroSection";
+import HorizontalScrollingFeatures from "@/components/HorizontalScrollingFeatures";
+import UnifyFinancesSection from "@/components/UnifyFinancesSection";
+import ManageSubscriptionsCarousel from "@/components/ManageSubscriptionsCarousel";
+import FAQSection from "@/components/FAQSection";
+import PrivacySecuritySection from "@/components/PrivacySecuritySection";
+import PricingSection from "@/components/PricingSection";
+import FinalCTASection from "@/components/FinalCTASection";
+import FooterSection from "@/components/FooterSection";
+import SignInModal from "@/components/SignInModal";
 
 const Index = () => {
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Simple test content */}
-      <div className="container mx-auto px-4 py-20">
-        <h1 className="text-6xl font-bold text-white mb-8">SENTINEL</h1>
-        <p className="text-xl text-gray-300 mb-8">
-          Your AI subscription management platform
-        </p>
-        <div className="bg-blue-600 text-white px-8 py-4 rounded-lg inline-block">
-          Test Button
-        </div>
-      </div>
+    <div className="bg-black">
+      <Navigation onGetStartedClick={() => setIsSignInModalOpen(true)} />
+      <HeroSection onGetStartedClick={() => setIsSignInModalOpen(true)} />
+      <VideoHeroSection />
+      <HorizontalScrollingFeatures />
+      <UnifyFinancesSection />
+      <ManageSubscriptionsCarousel />
+      <FAQSection />
+      <PrivacySecuritySection />
+      <PricingSection />
+      <FinalCTASection />
+      <FooterSection />
+      <SignInModal 
+        isOpen={isSignInModalOpen} 
+        onClose={() => setIsSignInModalOpen(false)} 
+      />
     </div>
   );
 };
