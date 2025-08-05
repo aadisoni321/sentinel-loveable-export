@@ -19,6 +19,20 @@ export default {
 		},
 		extend: {
 			colors: {
+				// EXACT SENTINEL COLOR SPECIFICATIONS
+				'pure-black': '#000000',
+				'electric-blue': '#3366FF',
+				'blue-hover': '#2952CC',
+				'pure-white': '#FFFFFF',
+				'light-gray': '#CCCCCC',
+				'medium-gray': '#888888',
+				'dark-gray-card': '#1A1A1A',
+				'border-gray': '#666666',
+				'red-accent': '#FF4444',
+				'green-accent': '#00CC66',
+				'orange-accent': '#FF6B35',
+				
+				// Shadcn compatibility
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
