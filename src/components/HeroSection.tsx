@@ -47,7 +47,7 @@ const HeroSection = ({ onGetStartedClick }: HeroSectionProps) => {
           {/* Right Column */}
           <div className="space-y-6">
             {/* Main Headline */}
-            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+            <h2 className="text-lg font-bold text-white leading-tight">
               Understand. Detect. Protect.
             </h2>
 
@@ -60,7 +60,7 @@ const HeroSection = ({ onGetStartedClick }: HeroSectionProps) => {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Button
                 size="lg"
-                className="btn-primary px-8 py-4 rounded-xl font-semibold text-base w-40"
+                className="btn-primary px-8 py-4 font-semibold text-base w-40"
                 onClick={() => scrollToSection("pricing")}
               >
                 Get Sentinel
@@ -68,21 +68,11 @@ const HeroSection = ({ onGetStartedClick }: HeroSectionProps) => {
               <Button
                 variant="outline"
                 size="lg"
-                className="btn-secondary px-8 py-4 rounded-xl font-semibold text-base w-40"
+                className="btn-secondary px-8 py-4 font-semibold text-base w-40"
                 onClick={onGetStartedClick}
               >
                 Get Started
               </Button>
-            </div>
-
-            {/* Small Link */}
-            <div className="pt-4">
-              <button 
-                onClick={() => scrollToSection("pricing")}
-                className="text-blue-500 text-sm font-medium hover:underline transition-all duration-300"
-              >
-                Get Sentinel →
-              </button>
             </div>
           </div>
         </div>

@@ -189,9 +189,15 @@
   animation: scroll-right 20s linear infinite;
 }
 
+/* Remove all rounded corners globally */
+.btn-primary, .btn-secondary, button, input, textarea, select, div[class*="rounded"] {
+  border-radius: 0 !important;
+}
+
 @layer base {
   * {
     @apply border-border;
+    border-radius: 0 !important;
   }
 
   body {
