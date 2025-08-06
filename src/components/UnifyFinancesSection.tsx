@@ -49,9 +49,9 @@ const UnifyFinancesSection = () => {
   const cards: FloatingCard[] = [
     {
       id: "card1",
-      initialX: 10,
-      initialY: 20,
-      width: 300,
+      initialX: 15,
+      initialY: 25,
+      width: 200,
       height: 200,
       borderColor: "",
       glowColor: "",
@@ -61,9 +61,9 @@ const UnifyFinancesSection = () => {
     },
     {
       id: "card2",
-      initialX: 85,
-      initialY: 15,
-      width: 250,
+      initialX: 80,
+      initialY: 20,
+      width: 180,
       height: 180,
       borderColor: "",
       glowColor: "",
@@ -73,9 +73,9 @@ const UnifyFinancesSection = () => {
     },
     {
       id: "card3",
-      initialX: 8,
-      initialY: 70,
-      width: 250,
+      initialX: 10,
+      initialY: 65,
+      width: 180,
       height: 180,
       borderColor: "",
       glowColor: "",
@@ -85,9 +85,9 @@ const UnifyFinancesSection = () => {
     },
     {
       id: "card4",
-      initialX: 90,
-      initialY: 40,
-      width: 250,
+      initialX: 85,
+      initialY: 45,
+      width: 180,
       height: 180,
       borderColor: "",
       glowColor: "",
@@ -97,9 +97,9 @@ const UnifyFinancesSection = () => {
     },
     {
       id: "card5",
-      initialX: 80,
-      initialY: 80,
-      width: 250,
+      initialX: 75,
+      initialY: 75,
+      width: 180,
       height: 180,
       borderColor: "",
       glowColor: "",
@@ -155,10 +155,10 @@ const UnifyFinancesSection = () => {
           }}
         >
           <div className="text-center">
-            <h2 className="text-[16rem] md:text-[20rem] lg:text-[28rem] font-bold text-blue-500 leading-none">
+            <h2 className="text-[8rem] md:text-[12rem] lg:text-[16rem] font-bold text-blue-500 leading-none">
               Unify Your
             </h2>
-            <h2 className="text-[16rem] md:text-[20rem] lg:text-[28rem] font-bold text-blue-500 leading-none">
+            <h2 className="text-[8rem] md:text-[12rem] lg:text-[16rem] font-bold text-blue-500 leading-none">
               Finances
             </h2>
           </div>
