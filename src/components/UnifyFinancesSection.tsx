@@ -150,17 +150,32 @@ const UnifyFinancesSection = () => {
     const centerX = 50;
     const centerY = 50;
     
-    const currentX = card.initialX + (centerX - card.initialX) * animationProgress;
-    const currentY = card.initialY + (centerY - card.initialY) * animationProgress;
+    // Cards start invisible and gradually appear
+    if (animationProgress < 0.2) {
+      return {
+        left: `${card.initialX}%`,
+        top: `${card.initialY}%`,
+        transform: `translate(-50%, -50%) scale(0)`,
+        opacity: 0,
+        zIndex: 1
+      };
+    }
+
+    // Adjust progress for card movement (starts after 20% of scroll)
+    const cardProgress = Math.min(1, (animationProgress - 0.2) / 0.8);
     
-    const rotation = animationProgress * (Math.random() * 30 - 15); // Random rotation
-    const scale = 1 - animationProgress * 0.1; // Slight scale down
+    const currentX = card.initialX + (centerX - card.initialX) * cardProgress;
+    const currentY = card.initialY + (centerY - card.initialY) * cardProgress;
+    
+    // No rotation, just straight movement
+    const scale = 0.3 + (1 - 0.3) * (1 - cardProgress * 0.7); // Start small, grow, then shrink slightly
 
     return {
       left: `${currentX}%`,
       top: `${currentY}%`,
-      transform: `translate(-50%, -50%) rotate(${rotation}deg) scale(${scale})`,
-      zIndex: Math.floor(animationProgress * 10) + 1
+      transform: `translate(-50%, -50%) scale(${scale})`,
+      opacity: Math.min(1, cardProgress * 2),
+      zIndex: Math.floor(cardProgress * 10) + 1
     };
   };
 
@@ -171,9 +186,9 @@ const UnifyFinancesSection = () => {
         <div 
           className="absolute inset-0 flex items-center justify-center z-0"
           style={{ 
-            opacity: animationProgress < 0.9 ? 1 - animationProgress * 0.8 : 0,
-            transform: `scale(${3 - animationProgress * 2})`,
-            transition: 'transform 0.1s ease-out'
+            opacity: animationProgress < 0.8 ? 1 - animationProgress * 0.5 : 0,
+            transform: `scale(${1 - animationProgress * 0.3})`,
+            transition: 'all 0.1s ease-out'
           }}
         >
           <h2 className="text-6xl md:text-8xl font-bold text-blue-500 text-center">
@@ -182,19 +197,26 @@ const UnifyFinancesSection = () => {
         </div>
 
         {/* Floating Cards */}
-        {cards.map((card) => (
-          <div
-            key={card.id}
-            className={`absolute transition-all duration-300 ease-out ${card.glowColor} hover-lift`}
-            style={{
-              width: `${card.width}px`,
-              height: `${card.height}px`,
-              ...getCardPosition(card)
-            }}
-          >
-            {card.content}
-          </div>
-        ))}
+        {cards.map((card) => {
+          const cardStyle = getCardPosition(card);
+          return (
+            <div
+              key={card.id}
+              className={`absolute transition-all duration-300 ease-out ${card.glowColor} hover-lift`}
+              style={{
+                width: `${card.width}px`,
+                height: `${card.height}px`,
+                left: cardStyle.left,
+                top: cardStyle.top,
+                transform: cardStyle.transform,
+                opacity: cardStyle.opacity,
+                zIndex: cardStyle.zIndex
+              }}
+            >
+              {card.content}
+            </div>
+          );
+        })}
       </div>
     </section>
   );
