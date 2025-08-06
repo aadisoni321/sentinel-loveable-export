@@ -33,6 +33,14 @@ const UnifyFinancesSection = () => {
       if (containerTop <= 0 && containerTop + containerHeight >= windowHeight) {
         const progress = Math.max(0, Math.min(1, Math.abs(containerTop) / (containerHeight - windowHeight)));
         setAnimationProgress(progress);
+        
+        // Prevent scrolling past if animation isn't complete
+        if (progress < 1 && containerTop < -(containerHeight - windowHeight)) {
+          window.scrollTo({
+            top: window.scrollY + containerTop + (containerHeight - windowHeight),
+            behavior: 'auto'
+          });
+        }
       } else if (containerTop > 0) {
         setAnimationProgress(0);
       } else if (containerTop + containerHeight < windowHeight) {
