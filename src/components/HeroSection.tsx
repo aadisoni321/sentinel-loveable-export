@@ -19,18 +19,14 @@ const HeroSection = ({ onGetStartedClick }: HeroSectionProps) => {
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           {/* Left Column */}
           <div className="space-y-8">
-            {/* Notification Banner */}
-            <div className="inline-flex items-center px-5 py-3 rounded-full bg-gradient-to-r from-blue-900 to-blue-700 border border-blue-600/30 hover-lift">
-              <span className="text-xl mr-2">⚡</span>
-              <span className="text-white text-sm font-medium mr-3">
-                Sentinel Is Live! Start Saving.
-              </span>
-              <button 
-                onClick={() => scrollToSection("features")}
-                className="text-blue-400 text-sm font-medium hover:text-blue-300 transition-colors"
-              >
-                Explore Now →
-              </button>
+            {/* Notification Banner - positioned above SENTINEL */}
+            <div className="mb-4">
+              <div className="inline-flex items-center">
+                <span className="text-xl mr-2">⚡</span>
+                <span className="text-white text-sm font-medium">
+                  Sentinel Is Live! Start Saving.
+                </span>
+              </div>
             </div>
 
             {/* Large SENTINEL Logo */}
@@ -47,7 +43,7 @@ const HeroSection = ({ onGetStartedClick }: HeroSectionProps) => {
           {/* Right Column */}
           <div className="space-y-6">
             {/* Main Headline */}
-            <h2 className="text-lg font-bold text-white leading-tight">
+            <h2 className="text-lg font-normal text-white leading-tight">
               Understand. Detect. Protect.
             </h2>
 

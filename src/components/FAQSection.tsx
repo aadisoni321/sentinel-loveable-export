@@ -16,7 +16,7 @@ const FAQSection = () => {
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-[72px] font-bold text-pure-white mb-8">FAQ</h2>
-          <p className="text-2xl text-light-gray">What does Sentinel do?</p>
+          <p className="text-3xl text-light-gray text-center">What does Sentinel do?</p>
         </div>
 
         {/* FAQ Animation */}
@@ -28,7 +28,7 @@ const FAQSection = () => {
                 key={`top-${index}`}
                 className="bg-[#222222] rounded-xl p-6 h-[200px] w-[280px] flex-shrink-0 flex items-center justify-start border border-transparent hover:border-white/10 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
               >
-                <p className="text-light-gray text-base leading-relaxed">
+                <p className="text-light-gray text-xl leading-relaxed text-center">
                   {question}
                 </p>
               </div>
@@ -42,7 +42,7 @@ const FAQSection = () => {
                 key={`bottom-${index}`}
                 className="bg-[#222222] rounded-xl p-6 h-[200px] w-[280px] flex-shrink-0 flex items-center justify-start border border-transparent hover:border-white/10 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
               >
-                <p className="text-light-gray text-base leading-relaxed">
+                <p className="text-light-gray text-xl leading-relaxed text-center">
                   {question}
                 </p>
               </div>

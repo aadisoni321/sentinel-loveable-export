@@ -189,6 +189,18 @@
   animation: scroll-right 20s linear infinite;
 }
 
+/* Footer Sentinel hover animation */
+.footer-sentinel-text {
+  transition: transform 0.3s ease-out;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* Enhanced scroll lock for unify section */
+body.scroll-locked {
+  overflow: hidden;
+}
+
 /* Remove all rounded corners globally */
 .btn-primary, .btn-secondary, button, input, textarea, select, div[class*="rounded"] {
   border-radius: 0 !important;

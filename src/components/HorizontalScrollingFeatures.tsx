@@ -55,20 +55,20 @@ const HorizontalScrollingFeatures = () => {
     }
   ];
 
-  return (
-    <section id="features" ref={containerRef} className="h-[500vh] bg-black relative">
+    return (
+    <section id="features" ref={containerRef} className="h-[300vh] bg-black relative">
       <div className="sticky top-0 h-screen flex overflow-hidden">
         {/* Left Side - Fixed Title */}
         <div className="w-[400px] flex-shrink-0 flex items-center pl-20">
-          <h2 className="text-5xl font-bold text-white leading-tight">
-            What You'll Unlock with Sentinel
+          <h2 className="text-5xl font-bold text-white leading-tight max-w-sm">
+            What You'll Unlock<br />with Sentinel
           </h2>
         </div>
 
         {/* Right Side - Scrolling Cards */}
         <div 
           ref={cardsRef}
-          className="flex items-center space-x-10 transition-transform duration-50 ease-out"
+          className="flex items-center space-x-10 transition-transform duration-100 ease-out"
           style={{ width: 'calc(4 * 400px + 3 * 40px)' }}
         >
           {features.map((feature, index) => (

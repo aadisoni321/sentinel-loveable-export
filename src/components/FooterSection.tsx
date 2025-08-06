@@ -12,9 +12,7 @@ const FooterSection = () => {
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Logo Column */}
           <div>
-            <div className="w-16 h-16 bg-electric-blue rounded-lg flex items-center justify-center mb-8">
-              {/* No content - removed "7" */}
-            </div>
+            {/* Empty space - removed blue square */}
           </div>
 
           {/* Terms Column */}
@@ -111,8 +109,23 @@ const FooterSection = () => {
       </div>
 
       {/* Final Blue Section */}
-      <div className="bg-electric-blue py-[100px] flex items-center justify-center">
-        <h2 className="text-[120px] font-extrabold text-pure-white tracking-[4px]">
+      <div className="bg-electric-blue py-[100px] flex items-center justify-center relative overflow-hidden">
+        <h2 
+          className="text-[300px] font-extrabold text-pure-white tracking-[4px] cursor-pointer select-none footer-sentinel-text"
+          onMouseMove={(e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const angleX = (y - centerY) / 30;
+            const angleY = (centerX - x) / 30;
+            e.currentTarget.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'rotateX(0deg) rotateY(0deg)';
+          }}
+        >
           SENTINEL
         </h2>
       </div>

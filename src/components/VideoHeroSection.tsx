@@ -18,13 +18,13 @@ const VideoHeroSection = () => {
         </div>
 
         {/* Main Headline */}
-        <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-20 max-w-4xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-20 max-w-4xl mx-auto whitespace-nowrap">
           The Smartest Way to Manage Subscriptions
         </h2>
 
         {/* Video Container */}
         <div 
-          className={`relative w-full max-w-6xl mx-auto aspect-[16/9] overflow-hidden hover-lift cursor-pointer transition-all duration-500 ${
+          className={`relative w-full max-w-7xl mx-auto aspect-[16/9] overflow-hidden hover-lift cursor-pointer transition-all duration-500 ${
             isHovered ? 'scale-[1.02]' : ''
           }`}
           onMouseEnter={() => setIsHovered(true)}

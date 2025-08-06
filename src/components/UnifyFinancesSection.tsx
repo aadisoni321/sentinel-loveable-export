@@ -165,13 +165,15 @@ const UnifyFinancesSection = () => {
   };
 
   return (
-    <section ref={containerRef} className="h-[150vh] bg-black relative overflow-hidden">
+    <section ref={containerRef} className="h-[200vh] bg-black relative overflow-hidden">
       <div className="sticky top-0 h-screen flex items-center justify-center">
         {/* Central Title */}
         <div 
           className="absolute inset-0 flex items-center justify-center z-0"
           style={{ 
-            opacity: animationProgress < 0.8 ? 1 - animationProgress * 1.25 : 0 
+            opacity: animationProgress < 0.9 ? 1 - animationProgress * 0.8 : 0,
+            transform: `scale(${3 - animationProgress * 2})`,
+            transition: 'transform 0.1s ease-out'
           }}
         >
           <h2 className="text-6xl md:text-8xl font-bold text-blue-500 text-center">
