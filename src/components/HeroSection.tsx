@@ -14,9 +14,15 @@ const HeroSection = ({ onGetStartedClick }: HeroSectionProps) => {
   };
 
   return (
-    <section className="min-h-screen bg-black pt-20 flex items-center">
-      <div className="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-[120px] py-20">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+    <section className="min-h-screen bg-black pt-20 flex items-end relative overflow-hidden">
+      {/* Animated Wave Background */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-blue-600/10"></div>
+        <div className="wave-animation"></div>
+      </div>
+      
+      <div className="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-[120px] py-32 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-32 items-center">
           {/* Left Column */}
           <div className="space-y-8">
             {/* Notification Banner - positioned above SENTINEL */}

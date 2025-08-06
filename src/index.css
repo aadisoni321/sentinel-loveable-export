@@ -201,6 +201,57 @@ body.scroll-locked {
   overflow: hidden;
 }
 
+/* Futuristic Wave Animation */
+.wave-animation {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(29, 78, 216, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(96, 165, 250, 0.08) 0%, transparent 50%);
+  animation: wave-float 20s ease-in-out infinite;
+}
+
+.wave-animation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, transparent 40%, rgba(59, 130, 246, 0.05) 50%, transparent 60%),
+    linear-gradient(-45deg, transparent 40%, rgba(29, 78, 216, 0.03) 50%, transparent 60%);
+  animation: wave-shimmer 15s linear infinite;
+}
+
+@keyframes wave-float {
+  0%, 100% {
+    transform: translateX(-20%) translateY(-10%) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-10%) translateY(-20%) rotate(1deg);
+  }
+  50% {
+    transform: translateX(0%) translateY(-5%) rotate(-1deg);
+  }
+  75% {
+    transform: translateX(-15%) translateY(-15%) rotate(0.5deg);
+  }
+}
+
+@keyframes wave-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 /* Remove all rounded corners globally */
 .btn-primary, .btn-secondary, button, input, textarea, select, div[class*="rounded"] {
   border-radius: 0 !important;
