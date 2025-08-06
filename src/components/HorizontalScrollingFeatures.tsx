@@ -21,7 +21,7 @@ const HorizontalScrollingFeatures = () => {
         setScrollProgress(delayedProgress);
         
         // Apply horizontal transform based on scroll progress with smoother calculation
-        const maxTranslate = cardsRef.current.scrollWidth - window.innerWidth + 400; // 400px for left panel
+        const maxTranslate = cardsRef.current.scrollWidth - window.innerWidth + 800; // 800px for left panel + extra space
         const translateX = -delayedProgress * maxTranslate;
         cardsRef.current.style.transform = `translateX(${Math.max(-maxTranslate, translateX)}px)`;
       }
