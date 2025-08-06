@@ -1,4 +1,9 @@
 import { useEffect, useRef, useState } from "react";
+import cardCancel from "@/assets/card-cancel.png";
+import cardNetflix from "@/assets/card-netflix.png";
+import cardJuly from "@/assets/card-july.png";
+import cardActivity from "@/assets/card-activity.png";
+import cardExpiring from "@/assets/card-expiring.png";
 
 interface FloatingCard {
   id: string;
@@ -42,106 +47,80 @@ const UnifyFinancesSection = () => {
       id: "expiring",
       initialX: 10,
       initialY: 20,
-      width: 240,
-      height: 180,
-      borderColor: "border-orange-500",
-      glowColor: "shadow-orange-500/30",
+      width: 300,
+      height: 300,
+      borderColor: "",
+      glowColor: "",
       content: (
-        <div className="bg-gray-900 rounded-xl p-4 h-full border-3 border-orange-500">
-          <div className="text-white text-sm mb-3">Expiring...</div>
-          <div className="grid grid-cols-2 gap-2">
-            <div className="w-8 h-8 bg-green-600 rounded flex items-center justify-center text-white text-xs font-bold">hulu</div>
-            <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center text-white text-xs font-bold">A</div>
-            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white text-xs font-bold">△</div>
-            <div className="w-8 h-8 bg-purple-600 rounded flex items-center justify-center text-white text-xs font-bold">⚡</div>
-          </div>
-        </div>
+        <img 
+          src={cardExpiring} 
+          alt="Expiring subscriptions" 
+          className="w-full h-full object-contain"
+        />
       )
     },
     {
       id: "netflix",
       initialX: 85,
       initialY: 15,
-      width: 180,
-      height: 160,
-      borderColor: "border-red-500",
-      glowColor: "shadow-red-500/40",
+      width: 250,
+      height: 250,
+      borderColor: "",
+      glowColor: "",
       content: (
-        <div className="bg-red-600 rounded-xl p-4 h-full relative">
-          <div className="absolute top-2 right-2 text-white font-bold text-lg">N</div>
-          <div className="flex flex-col items-center justify-center h-full">
-            <div className="text-white font-bold text-3xl">2</div>
-            <div className="text-white text-sm">DAYS</div>
-            <div className="text-white text-xs mt-2">Expiring Trial</div>
-          </div>
-        </div>
+        <img 
+          src={cardNetflix} 
+          alt="Netflix expiring trial" 
+          className="w-full h-full object-contain"
+        />
       )
     },
     {
-      id: "spotify",
+      id: "cancel",
       initialX: 8,
       initialY: 70,
-      width: 200,
-      height: 140,
-      borderColor: "border-green-500",
-      glowColor: "shadow-green-500/40",
+      width: 250,
+      height: 250,
+      borderColor: "",
+      glowColor: "",
       content: (
-        <div className="bg-gray-900 rounded-xl p-4 h-full border-3 border-green-500">
-          <div className="flex items-center mb-2">
-            <div className="text-green-500 mr-2">🎵</div>
-          </div>
-          <div className="text-white text-2xl font-bold mb-1">$9.99</div>
-          <div className="text-green-500 font-semibold mb-2">Cancel</div>
-          <div className="text-gray-400 text-xs">You Save: $109.89</div>
-        </div>
+        <img 
+          src={cardCancel} 
+          alt="Cancel subscription" 
+          className="w-full h-full object-contain"
+        />
       )
     },
     {
-      id: "saved",
+      id: "july",
       initialX: 90,
       initialY: 40,
-      width: 160,
-      height: 180,
-      borderColor: "border-blue-500",
-      glowColor: "shadow-blue-500/40",
+      width: 250,
+      height: 250,
+      borderColor: "",
+      glowColor: "",
       content: (
-        <div className="bg-blue-600 rounded-xl p-4 h-full relative" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%)' }}>
-          <div className="text-white text-sm mb-2">JULY</div>
-          <div className="absolute top-2 right-2 text-white">🔖</div>
-          <div className="bg-white text-black px-2 py-1 rounded text-xs font-bold mb-2">SAVED</div>
-          <div className="text-white text-xl font-bold">$342.89</div>
-          <div className="text-white/80 text-xs">Secured</div>
-        </div>
+        <img 
+          src={cardJuly} 
+          alt="July savings" 
+          className="w-full h-full object-contain"
+        />
       )
     },
     {
       id: "activity",
       initialX: 80,
       initialY: 80,
-      width: 200,
-      height: 160,
-      borderColor: "border-red-500",
-      glowColor: "shadow-red-500/40",
+      width: 250,
+      height: 250,
+      borderColor: "",
+      glowColor: "",
       content: (
-        <div className="bg-gray-900 rounded-xl p-4 h-full border-3 border-red-500">
-          <div className="text-white text-sm mb-1">ACTIVITY</div>
-          <div className="text-gray-400 text-xs underline mb-3">Charges Blocked</div>
-          <div className="text-white text-2xl font-bold mb-3">$349.09</div>
-          <div className="flex space-x-2">
-            <div className="relative">
-              <div className="w-6 h-6 bg-green-600 rounded text-white text-xs flex items-center justify-center">hulu</div>
-              <div className="absolute -top-1 -right-1 text-red-500 text-lg">🚫</div>
-            </div>
-            <div className="relative">
-              <div className="w-6 h-6 bg-red-600 rounded text-white text-xs flex items-center justify-center">A</div>
-              <div className="absolute -top-1 -right-1 text-red-500 text-lg">🚫</div>
-            </div>
-            <div className="relative">
-              <div className="w-6 h-6 bg-purple-600 rounded text-white text-xs flex items-center justify-center">⚡</div>
-              <div className="absolute -top-1 -right-1 text-red-500 text-lg">🚫</div>
-            </div>
-          </div>
-        </div>
+        <img 
+          src={cardActivity} 
+          alt="Activity charges blocked" 
+          className="w-full h-full object-contain"
+        />
       )
     }
   ];
@@ -150,7 +129,7 @@ const UnifyFinancesSection = () => {
     const centerX = 50;
     const centerY = 50;
     
-    // Cards start invisible and gradually appear
+    // Cards start off-screen and gradually appear
     if (animationProgress < 0.2) {
       return {
         left: `${card.initialX}%`,
@@ -167,14 +146,14 @@ const UnifyFinancesSection = () => {
     const currentX = card.initialX + (centerX - card.initialX) * cardProgress;
     const currentY = card.initialY + (centerY - card.initialY) * cardProgress;
     
-    // No rotation, just straight movement
-    const scale = 0.3 + (1 - 0.3) * (1 - cardProgress * 0.7); // Start small, grow, then shrink slightly
+    // No rotation, just straight movement with scaling
+    const scale = Math.min(1, 0.3 + cardProgress * 0.7);
 
     return {
       left: `${currentX}%`,
       top: `${currentY}%`,
       transform: `translate(-50%, -50%) scale(${scale})`,
-      opacity: Math.min(1, cardProgress * 2),
+      opacity: 1, // Always 100% opacity when visible
       zIndex: Math.floor(cardProgress * 10) + 1
     };
   };
@@ -186,12 +165,12 @@ const UnifyFinancesSection = () => {
         <div 
           className="absolute inset-0 flex items-center justify-center z-0"
           style={{ 
-            opacity: animationProgress < 0.8 ? 1 - animationProgress * 0.5 : 0,
-            transform: `scale(${1 - animationProgress * 0.3})`,
+            opacity: animationProgress < 0.8 ? 1 - animationProgress * 0.8 : 0,
+            transform: `scale(${Math.max(0.1, 1 - animationProgress * 0.8)})`,
             transition: 'all 0.1s ease-out'
           }}
         >
-          <h2 className="text-6xl md:text-8xl font-bold text-blue-500 text-center">
+          <h2 className="text-[12rem] md:text-[18rem] lg:text-[24rem] font-bold text-blue-500 text-center leading-none">
             Unify Your<br />Finances
           </h2>
         </div>
