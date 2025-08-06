@@ -19,40 +19,61 @@ interface FloatingCard {
 const UnifyFinancesSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [animationProgress, setAnimationProgress] = useState(0);
+  const [isAnimationActive, setIsAnimationActive] = useState(false);
+  const [scrollLockPosition, setScrollLockPosition] = useState(0);
+  const [accumulatedScroll, setAccumulatedScroll] = useState(0);
 
   useEffect(() => {
+    let isLocked = false;
+    
     const handleScroll = () => {
       if (!containerRef.current) return;
 
       const containerRect = containerRef.current.getBoundingClientRect();
       const containerTop = containerRect.top;
-      const containerHeight = containerRect.height;
-      const windowHeight = window.innerHeight;
+      
+      // Check if we've reached the animation section
+      if (containerTop <= 0 && !isAnimationActive && !isLocked) {
+        // Start animation and lock scroll
+        setIsAnimationActive(true);
+        setScrollLockPosition(window.scrollY);
+        setAccumulatedScroll(0);
+        isLocked = true;
+        document.body.style.overflow = 'hidden';
+      }
+    };
 
-      // Calculate animation progress - more controlled
-      if (containerTop <= 0 && containerTop + containerHeight >= windowHeight) {
-        const progress = Math.max(0, Math.min(1, Math.abs(containerTop) / (containerHeight - windowHeight)));
+    const handleWheel = (e: WheelEvent) => {
+      if (isAnimationActive && animationProgress < 1) {
+        e.preventDefault();
+        
+        // Accumulate scroll delta to drive animation
+        const newAccumulated = Math.max(0, accumulatedScroll + e.deltaY);
+        setAccumulatedScroll(newAccumulated);
+        
+        // Convert accumulated scroll to progress (adjust 2000 to control animation speed)
+        const progress = Math.min(1, newAccumulated / 2000);
         setAnimationProgress(progress);
         
-        // Prevent scrolling past if animation isn't complete
-        if (progress < 1 && containerTop < -(containerHeight - windowHeight)) {
-          window.scrollTo({
-            top: window.scrollY + containerTop + (containerHeight - windowHeight),
-            behavior: 'auto'
-          });
+        // If animation is complete, unlock scrolling
+        if (progress >= 1) {
+          setIsAnimationActive(false);
+          document.body.style.overflow = 'auto';
+          isLocked = false;
         }
-      } else if (containerTop > 0) {
-        setAnimationProgress(0);
-      } else if (containerTop + containerHeight < windowHeight) {
-        setAnimationProgress(1);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("wheel", handleWheel, { passive: false });
     handleScroll();
     
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", handleWheel);
+      document.body.style.overflow = 'auto';
+    };
+  }, [isAnimationActive, animationProgress, accumulatedScroll]);
 
   const cards: FloatingCard[] = [
     {
