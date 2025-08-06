@@ -14,10 +14,10 @@ const HorizontalScrollingFeatures = () => {
       const containerHeight = containerRect.height;
       const windowHeight = window.innerHeight;
 
-      // Calculate scroll progress when section is in view with delay
-      if (containerTop <= windowHeight * 0.8 && containerTop + containerHeight >= 0) {
-        // Delay the animation start and make it smoother
-        const delayedProgress = Math.max(0, Math.min(1, (windowHeight * 0.8 - containerTop) / (windowHeight + containerHeight * 0.6)));
+      // Calculate scroll progress when section is in view with more delay
+      if (containerTop <= windowHeight * 0.3 && containerTop + containerHeight >= 0) {
+        // More delayed animation start to see the title first
+        const delayedProgress = Math.max(0, Math.min(1, (windowHeight * 0.3 - containerTop) / (windowHeight + containerHeight * 0.4)));
         setScrollProgress(delayedProgress);
         
         // Apply horizontal transform based on scroll progress with smoother calculation
@@ -36,7 +36,7 @@ const HorizontalScrollingFeatures = () => {
   const features = [
     {
       id: "00",
-      title: "From Trial to Control: AI Integrated Into Every Step of Subscription Management",
+      title: "From Trial to Control: AI Integrated Subscription Manager",
       description: "Sentinel tracks trials, renewals, and fees from the moment you sign up. Our AI handles the full lifecycle—signup to cancel—without needing bank access. Stay informed and in control."
     },
     {
@@ -69,7 +69,7 @@ const HorizontalScrollingFeatures = () => {
         {/* Right Side - Scrolling Cards */}
         <div 
           ref={cardsRef}
-          className="flex items-start space-x-10 transition-transform duration-75 ease-out"
+          className="flex items-center space-x-10 transition-transform duration-75 ease-out"
           style={{ width: 'calc(4 * 400px + 3 * 40px)' }}
         >
           {features.map((feature, index) => (
