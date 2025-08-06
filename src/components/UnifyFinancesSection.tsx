@@ -29,10 +29,14 @@ const UnifyFinancesSection = () => {
       const containerHeight = containerRect.height;
       const windowHeight = window.innerHeight;
 
-      // Calculate animation progress
-      if (containerTop <= windowHeight && containerTop + containerHeight >= 0) {
-        const progress = Math.max(0, Math.min(1, (windowHeight - containerTop) / (windowHeight + containerHeight)));
+      // Calculate animation progress - more controlled
+      if (containerTop <= 0 && containerTop + containerHeight >= windowHeight) {
+        const progress = Math.max(0, Math.min(1, Math.abs(containerTop) / (containerHeight - windowHeight)));
         setAnimationProgress(progress);
+      } else if (containerTop > 0) {
+        setAnimationProgress(0);
+      } else if (containerTop + containerHeight < windowHeight) {
+        setAnimationProgress(1);
       }
     };
 
@@ -44,83 +48,63 @@ const UnifyFinancesSection = () => {
 
   const cards: FloatingCard[] = [
     {
-      id: "expiring",
+      id: "card1",
       initialX: 10,
       initialY: 20,
       width: 300,
-      height: 300,
+      height: 200,
       borderColor: "",
       glowColor: "",
       content: (
-        <img 
-          src={cardExpiring} 
-          alt="Expiring subscriptions" 
-          className="w-full h-full object-contain"
-        />
+        <div className="w-full h-full bg-white rounded-lg" />
       )
     },
     {
-      id: "netflix",
+      id: "card2",
       initialX: 85,
       initialY: 15,
       width: 250,
-      height: 250,
+      height: 180,
       borderColor: "",
       glowColor: "",
       content: (
-        <img 
-          src={cardNetflix} 
-          alt="Netflix expiring trial" 
-          className="w-full h-full object-contain"
-        />
+        <div className="w-full h-full bg-white rounded-lg" />
       )
     },
     {
-      id: "cancel",
+      id: "card3",
       initialX: 8,
       initialY: 70,
       width: 250,
-      height: 250,
+      height: 180,
       borderColor: "",
       glowColor: "",
       content: (
-        <img 
-          src={cardCancel} 
-          alt="Cancel subscription" 
-          className="w-full h-full object-contain"
-        />
+        <div className="w-full h-full bg-white rounded-lg" />
       )
     },
     {
-      id: "july",
+      id: "card4",
       initialX: 90,
       initialY: 40,
       width: 250,
-      height: 250,
+      height: 180,
       borderColor: "",
       glowColor: "",
       content: (
-        <img 
-          src={cardJuly} 
-          alt="July savings" 
-          className="w-full h-full object-contain"
-        />
+        <div className="w-full h-full bg-white rounded-lg" />
       )
     },
     {
-      id: "activity",
+      id: "card5",
       initialX: 80,
       initialY: 80,
       width: 250,
-      height: 250,
+      height: 180,
       borderColor: "",
       glowColor: "",
       content: (
-        <img 
-          src={cardActivity} 
-          alt="Activity charges blocked" 
-          className="w-full h-full object-contain"
-        />
+        <div className="w-full h-full bg-white rounded-lg" />
       )
     }
   ];
@@ -165,14 +149,19 @@ const UnifyFinancesSection = () => {
         <div 
           className="absolute inset-0 flex items-center justify-center z-0"
           style={{ 
-            opacity: animationProgress < 0.8 ? 1 - animationProgress * 0.8 : 0,
-            transform: `scale(${Math.max(0.1, 1 - animationProgress * 0.8)})`,
+            opacity: animationProgress < 0.9 ? 1 - animationProgress * 1.2 : 0,
+            transform: `scale(${Math.max(0.1, 1 - animationProgress * 0.9)})`,
             transition: 'all 0.1s ease-out'
           }}
         >
-          <h2 className="text-[12rem] md:text-[18rem] lg:text-[24rem] font-bold text-blue-500 text-center leading-none">
-            Unify Your<br />Finances
-          </h2>
+          <div className="text-center">
+            <h2 className="text-[16rem] md:text-[20rem] lg:text-[28rem] font-bold text-blue-500 leading-none">
+              Unify Your
+            </h2>
+            <h2 className="text-[16rem] md:text-[20rem] lg:text-[28rem] font-bold text-blue-500 leading-none">
+              Finances
+            </h2>
+          </div>
         </div>
 
         {/* Floating Cards */}
