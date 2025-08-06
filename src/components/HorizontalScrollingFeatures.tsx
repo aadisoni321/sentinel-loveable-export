@@ -14,14 +14,15 @@ const HorizontalScrollingFeatures = () => {
       const containerHeight = containerRect.height;
       const windowHeight = window.innerHeight;
 
-      // Calculate scroll progress when section is in view
-      if (containerTop <= windowHeight && containerTop + containerHeight >= 0) {
-        const progress = Math.max(0, Math.min(1, (windowHeight - containerTop) / (windowHeight + containerHeight)));
-        setScrollProgress(progress);
+      // Calculate scroll progress when section is in view with delay
+      if (containerTop <= windowHeight * 0.8 && containerTop + containerHeight >= 0) {
+        // Delay the animation start and make it smoother
+        const delayedProgress = Math.max(0, Math.min(1, (windowHeight * 0.8 - containerTop) / (windowHeight + containerHeight * 0.6)));
+        setScrollProgress(delayedProgress);
         
-        // Apply horizontal transform based on scroll progress
+        // Apply horizontal transform based on scroll progress with smoother calculation
         const maxTranslate = cardsRef.current.scrollWidth - window.innerWidth + 400; // 400px for left panel
-        const translateX = -progress * maxTranslate;
+        const translateX = -delayedProgress * maxTranslate;
         cardsRef.current.style.transform = `translateX(${Math.max(-maxTranslate, translateX)}px)`;
       }
     };
@@ -68,40 +69,39 @@ const HorizontalScrollingFeatures = () => {
         {/* Right Side - Scrolling Cards */}
         <div 
           ref={cardsRef}
-          className="flex items-center space-x-10 transition-transform duration-100 ease-out"
+          className="flex items-start space-x-10 transition-transform duration-75 ease-out"
           style={{ width: 'calc(4 * 400px + 3 * 40px)' }}
         >
           {features.map((feature, index) => (
-            <div
-              key={feature.id}
-              className="w-[400px] h-[500px] bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-8 flex flex-col justify-between hover-lift"
-              style={{
-                background: `linear-gradient(135deg, 
-                  hsl(var(--electric-blue)) 0%, 
-                  hsl(224, 68%, 58%) 100%
-                )`
-              }}
-            >
-              {/* Header */}
-              <div className="flex justify-between items-start">
-                <span className="text-white/80 text-lg font-semibold">
+            <div key={feature.id} className="w-[400px] flex flex-col">
+              {/* Header - Outside and above the card */}
+              <div className="mb-4">
+                <span className="text-blue-500 text-lg font-semibold">
                   [{feature.id}]
                 </span>
               </div>
 
-              {/* Title */}
-              <div className="flex-1 flex items-center justify-center">
-                <h3 className="text-2xl font-semibold text-white leading-tight text-center mb-4">
+              {/* Title - Outside and above the card */}
+              <div className="mb-6">
+                <h3 className="text-2xl font-semibold text-white leading-tight">
                   {feature.title}
                 </h3>
               </div>
 
-              {/* Placeholder for Features */}
-              <div className="text-center mb-8">
+              {/* Blue Card - Just the features placeholder */}
+              <div
+                className="w-full h-[350px] p-8 flex items-center justify-center mb-6"
+                style={{
+                  background: `linear-gradient(135deg, 
+                    hsl(var(--electric-blue)) 0%, 
+                    hsl(224, 68%, 58%) 100%
+                  )`
+                }}
+              >
                 <span className="text-white/60 text-4xl font-light">Features</span>
               </div>
 
-              {/* Description */}
+              {/* Description - Outside and below the card */}
               <div>
                 <p className="text-white/90 text-base leading-relaxed">
                   {feature.description}
