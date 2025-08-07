@@ -1,21 +1,21 @@
 const FAQSection = () => {
   const faqItems = [
-    "What does Sentinel do?",
-    "How does the cancellation process work?",
-    "Is my data secure?",
-    "What subscription services are supported?",
-    "How much does Sentinel cost?",
-    "Can I use Sentinel without browser extension?",
-    "How do I get notified about renewals?",
-    "What happens to my data if I cancel?",
-    "Does Sentinel work with all browsers?",
-    "Can I cancel multiple subscriptions at once?",
-    "How accurate is the subscription detection?",
-    "Is there a mobile app available?",
-    "What payment methods do you accept?",
-    "Can I get refunds for cancelled subscriptions?",
-    "How does Sentinel protect my privacy?",
-    "Do you offer customer support?"
+    "How accurate is Sentinel's subscription detection?",
+    "Can I cancel subscriptions directly through Sentinel?",
+    "How does the notification system work?",
+    "What insights does the spending tracker provide?",
+    "How fast does Sentinel find my subscriptions?",
+    "Can I set custom renewal alerts?",
+    "Does Sentinel track free trial expirations?",
+    "How does the browser extension work?",
+    "Can I categorize my subscriptions?",
+    "How detailed are the spending reports?",
+    "Does Sentinel work with business accounts?",
+    "Can I export my subscription data?",
+    "How does Sentinel handle shared subscriptions?",
+    "What automation features are available?",
+    "Can I see subscription price changes over time?",
+    "How does Sentinel prioritize which subscriptions to cancel?"
   ];
 
   return (
@@ -24,17 +24,17 @@ const FAQSection = () => {
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-[72px] font-bold text-pure-white mb-8">FAQ</h2>
-          <p className="text-3xl text-light-gray text-center">What does Sentinel do?</p>
+          <p className="text-lg text-light-gray text-center">Frequently asked questions</p>
         </div>
 
         {/* FAQ Animation */}
         <div className="space-y-6 overflow-hidden">
           {/* Top Row - Sliding Left */}
           <div className="flex gap-6 animate-scroll-left">
-            {[...faqItems.slice(0, 8), ...faqItems.slice(0, 8), ...faqItems.slice(0, 8)].map((question, index) => (
+            {Array.from({ length: 50 }, (_, i) => faqItems[i % faqItems.length]).map((question, index) => (
               <div
                 key={`top-${index}`}
-                className="bg-[#222222] rounded-xl p-6 h-[200px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-white/30 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
+                className="bg-[#222222] rounded-xl p-6 h-[140px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-white/30 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
               >
                 <p className="text-light-gray text-xl leading-relaxed text-center">
                   {question}
@@ -45,10 +45,10 @@ const FAQSection = () => {
           
           {/* Bottom Row - Sliding Right */}
           <div className="flex gap-6 animate-scroll-right">
-            {[...faqItems.slice(8), ...faqItems.slice(8), ...faqItems.slice(8)].map((question, index) => (
+            {Array.from({ length: 50 }, (_, i) => faqItems[(i + 8) % faqItems.length]).map((question, index) => (
               <div
                 key={`bottom-${index}`}
-                className="bg-[#222222] rounded-xl p-6 h-[200px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-white/30 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
+                className="bg-[#222222] rounded-xl p-6 h-[140px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-white/30 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
               >
                 <p className="text-light-gray text-xl leading-relaxed text-center">
                   {question}
