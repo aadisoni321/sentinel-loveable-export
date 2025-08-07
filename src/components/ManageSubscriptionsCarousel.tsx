@@ -92,10 +92,10 @@ const ManageSubscriptionsCarousel = () => {
         <div className="w-full h-px bg-white/20 mb-12"></div>
 
         {/* Full Width Three Card Display */}
-        <div className="flex items-start justify-center w-full mb-20">
-          {/* Left Card - Smaller height, top-aligned */}
+        <div className="relative w-full mb-20">
+          {/* Left Card - Absolute positioned to left edge */}
           {activeSlide > 0 && (
-            <div className="flex-1 max-w-md opacity-60">
+            <div className="absolute left-0 top-0 w-[300px] opacity-60">
               <div 
                 className="w-full h-[350px]"
                 style={{
@@ -105,33 +105,35 @@ const ManageSubscriptionsCarousel = () => {
             </div>
           )}
 
-          {/* Center Card - Fixed width, full height, always centered */}
-          <div className="w-[800px] flex-shrink-0 mx-8">
-            <div 
-              className="w-full h-[500px] mb-8"
-              style={{
-                background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
-              }}
-            />
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
-              <div>
-                <h3 className="text-3xl font-bold mb-4 leading-tight h-[80px] flex items-center">
-                  {features[activeSlide].number}. {features[activeSlide].title}
-                </h3>
-              </div>
+          {/* Center Card - Always centered */}
+          <div className="flex justify-center">
+            <div className="w-[800px]">
+              <div 
+                className="w-full h-[500px] mb-8"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
+                }}
+              />
               
-              <div className="md:col-span-2">
-                <p className="text-sm leading-relaxed text-white/90">
-                  {features[activeSlide].content}
-                </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
+                <div>
+                  <h3 className="text-3xl font-bold mb-4 leading-tight h-[80px] flex items-center">
+                    {features[activeSlide].number}. {features[activeSlide].title}
+                  </h3>
+                </div>
+                
+                <div className="md:col-span-2">
+                  <p className="text-sm leading-relaxed text-white/90">
+                    {features[activeSlide].content}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right Card - Smaller height, top-aligned */}
+          {/* Right Card - Absolute positioned to right edge */}
           {activeSlide < features.length - 1 && (
-            <div className="flex-1 max-w-md opacity-60">
+            <div className="absolute right-0 top-0 w-[300px] opacity-60">
               <div 
                 className="w-full h-[350px]"
                 style={{
