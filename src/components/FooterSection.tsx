@@ -1,5 +1,6 @@
 import { Instagram, MessageCircle, Linkedin, Mail, ArrowUp } from "lucide-react";
 import { useEffect, useRef } from "react";
+import "@/styles/glitch-animations.css";
 
 const FooterSection = () => {
   const scrollToTop = () => {
@@ -166,21 +167,8 @@ const FooterSection = () => {
         >
           <h2 
             className="text-[clamp(8rem,20vw,24rem)] font-extrabold text-pure-white tracking-[4px] select-none footer-sentinel-text"
-            onMouseMove={(e) => {
-              const rect = e.currentTarget.getBoundingClientRect();
-              const x = e.clientX - rect.left;
-              const y = e.clientY - rect.top;
-              const centerX = rect.width / 2;
-              const centerY = rect.height / 2;
-              const angleX = (y - centerY) / 30;
-              const angleY = (centerX - x) / 30;
-              e.currentTarget.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'rotateX(0deg) rotateY(0deg)';
-            }}
           >
-            SENTINEL
+            <span className="footer-glitch" data-text="SENTINEL">SENTINEL</span>
           </h2>
         </div>
       </div>

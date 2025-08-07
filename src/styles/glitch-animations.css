@@ -1,0 +1,76 @@
+/* Glitch effect for SENTINEL footer text */
+/* Uses semantic tokens from Tailwind theme via CSS variables */
+
+.footer-glitch {
+  position: relative;
+  display: inline-block;
+  will-change: transform;
+}
+
+.footer-glitch::before,
+.footer-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, clip-path;
+}
+
+/* Color layers using design tokens */
+.footer-glitch::before {
+  color: hsl(var(--primary));
+  clip-path: inset(0 0 60% 0);
+  mix-blend-mode: screen;
+}
+.footer-glitch::after {
+  color: hsl(var(--accent));
+  clip-path: inset(60% 0 0 0);
+  mix-blend-mode: screen;
+}
+
+/* Base jitter of main text */
+.footer-glitch:hover {
+  animation: footer-glitch-jitter 420ms steps(8, end) infinite;
+}
+
+/* Activate layers on hover */
+.footer-glitch:hover::before {
+  opacity: 1;
+  animation: footer-glitch-shift 600ms steps(12, end) infinite;
+}
+.footer-glitch:hover::after {
+  opacity: 1;
+  animation: footer-glitch-shift 600ms steps(12, end) infinite reverse;
+}
+
+@keyframes footer-glitch-jitter {
+  0% { transform: translate3d(0,0,0); }
+  20% { transform: translate3d(2px,-1px,0); }
+  40% { transform: translate3d(-2px,1px,0); }
+  60% { transform: translate3d(1px,2px,0); }
+  80% { transform: translate3d(-1px,-2px,0); }
+  100% { transform: translate3d(0,0,0); }
+}
+
+/* Horizontal RGB-ish shifts for slices */
+@keyframes footer-glitch-shift {
+  0% { transform: translate3d(0,0,0); }
+  10% { transform: translate3d(-6px,-1px,0); }
+  20% { transform: translate3d(6px,1px,0); }
+  30% { transform: translate3d(-3px,0,0); }
+  40% { transform: translate3d(3px,0,0); }
+  50% { transform: translate3d(-8px,1px,0); }
+  60% { transform: translate3d(8px,-1px,0); }
+  70% { transform: translate3d(-4px,0,0); }
+  80% { transform: translate3d(4px,0,0); }
+  90% { transform: translate3d(-2px,0,0); }
+  100% { transform: translate3d(0,0,0); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .footer-glitch,
+  .footer-glitch::before,
+  .footer-glitch::after { animation: none !important; }
+}
