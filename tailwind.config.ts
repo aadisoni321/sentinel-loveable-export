@@ -18,6 +18,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'playfair': ['Playfair Display', 'serif'],
+			},
 			colors: {
 				// EXACT SENTINEL COLOR SPECIFICATIONS
 				'pure-black': '#000000',

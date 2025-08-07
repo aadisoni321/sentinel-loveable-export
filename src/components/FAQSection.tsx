@@ -23,7 +23,7 @@ const FAQSection = () => {
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 lg:px-[120px]">
         {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="text-[72px] font-bold text-gradient-calm mb-8">FAQ</h2>
+          <h2 className="text-[72px] font-bold text-gradient-calm mb-8 font-playfair">FAQ</h2>
           <p className="text-lg text-light-gray text-center">Frequently asked questions</p>
         </div>
       </div>

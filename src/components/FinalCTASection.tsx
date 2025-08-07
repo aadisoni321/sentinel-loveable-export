@@ -4,7 +4,7 @@ const FinalCTASection = () => {
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
         {/* Left Side Content */}
         <div>
-          <h2 className="text-[48px] font-bold text-gradient-calm mb-4 leading-tight">
+          <h2 className="text-[48px] font-bold text-gradient-calm mb-4 leading-tight font-playfair">
             Get Started with Sentinel
           </h2>
           <p className="text-2xl text-medium-gray">Try it for Free</p>
