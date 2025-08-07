@@ -57,7 +57,7 @@ const HorizontalScrollingFeatures = () => {
   ];
 
     return (
-    <section id="features" ref={containerRef} className="h-[300vh] bg-black relative">
+    <section id="features" ref={containerRef} className="h-[400vh] bg-black relative">
       <div className="sticky top-0 h-screen flex overflow-hidden">
         {/* Left Side - Fixed Title */}
         <div className="w-[500px] flex-shrink-0 flex items-center pl-20">
