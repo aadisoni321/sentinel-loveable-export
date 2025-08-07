@@ -1,0 +1,88 @@
+/* Privacy & Security section animations and utilities */
+:root {
+  /* Indigo-600 (#4F46E5) in HSL-ish form; used for section numbers */
+  --section-number: 239 84% 60%;
+}
+
+/* Scroll-triggered fade-up */
+.scroll-fade-up {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+.scroll-fade-up.in-view {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Icon base - slight scale on hover */
+.icon-anim {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Lock stack: cross-fade between closed and open shackle to simulate opening/closing */
+.icon-lock-stack {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+}
+.icon-lock-stack > svg {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.icon-lock-closed { opacity: 1; transform: translateY(0); }
+.icon-lock-open { opacity: 0; transform: translateY(-2px); }
+.icon-lock-stack:hover { transform: scale(1.1) translateZ(0); }
+.icon-lock-stack:hover .icon-lock-closed { opacity: 0; transform: translateY(2px); }
+.icon-lock-stack:hover .icon-lock-open { opacity: 1; transform: translateY(0); }
+
+/* Map pin pulse + small bounce on hover */
+.icon-pin:hover {
+  animation: pin-pulse 1.2s ease-in-out infinite, pin-bounce 0.4s ease-out 0s 1;
+}
+@keyframes pin-pulse {
+  0% { transform: scale(1.1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1.1); }
+}
+@keyframes pin-bounce {
+  0% { transform: translate3d(0, 0, 0) scale(1.1); }
+  30% { transform: translate3d(0, -4px, 0) scale(1.12); }
+  100% { transform: translate3d(0, 0, 0) scale(1.1); }
+}
+
+/* Globe rotation on hover (returns to original position after 360deg) */
+.icon-globe:hover {
+  animation: globe-rotate 1s linear 1;
+}
+@keyframes globe-rotate {
+  from { transform: scale(1.1) rotate(0deg); }
+  to { transform: scale(1.1) rotate(360deg); }
+}
+
+/* Section numbers styling */
+.privacy-section .section-number {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 1;
+  color: hsl(var(--section-number));
+  opacity: 0.3;
+  margin-bottom: 1rem;
+  animation: number-fade-in 0.8s ease-out both;
+}
+@keyframes number-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 0.3; transform: translateY(0); }
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .icon-anim, .scroll-fade-up, .privacy-section .section-number { transition: none !important; }
+  .scroll-fade-up { opacity: 1 !important; transform: none !important; }
+  .icon-pin:hover, .icon-globe:hover { animation: none !important; }
+}
