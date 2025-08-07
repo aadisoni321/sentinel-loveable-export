@@ -8,31 +8,31 @@ const ManageSubscriptionsCarousel = () => {
     {
       id: 0,
       number: "1",
-      title: "Track Subscriptions Automatically",
+      title: "Track Subscriptions\nAutomatically",
       content: "Sentinel monitors trials, subscriptions, and renewal patterns from the moment you sign up. It intelligently tracks confirmation emails, billing patterns, and known services—keeping your dashboard up to date without needing access to your financial data."
     },
     {
       id: 1,
       number: "2",
-      title: "One-Click Cancellation",
+      title: "One-Click\nCancellation",
       content: "Easily cancel unwanted subscriptions in seconds—no login hoops, customer service calls, or hidden steps. Sentinel handles service-specific flows behind the scenes, giving you a simple 'cancel' button that just works."
     },
     {
       id: 2,
       number: "3",
-      title: "Lightweight Browser Extension",
+      title: "Lightweight Browser\nExtension",
       content: "The Sentinel Assistant detects trials and signups in real time while you browse sites like Netflix, Audible, or Spotify. It works locally in your browser—never tracking history or storing sensitive data."
     },
     {
       id: 3,
       number: "4",
-      title: "Analytics & Usage Insights",
+      title: "Analytics & Usage\nInsights",
       content: "See which subscriptions you use and which you don't. Sentinel passively collects usage signals like login frequency or inactivity periods, helping you identify services you forget about or no longer need."
     },
     {
       id: 4,
       number: "5",
-      title: "Renewal & Trial Alerts",
+      title: "Renewal & Trial\nAlerts",
       content: "Get notified before you're charged—not after. Sentinel sends alerts for upcoming renewals, trial expirations, and billing changes via email, SMS, or calendar sync."
     }
   ];
