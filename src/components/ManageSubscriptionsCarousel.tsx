@@ -91,29 +91,21 @@ const ManageSubscriptionsCarousel = () => {
         {/* Thin Separator Line */}
         <div className="w-full h-px bg-white/20 mb-12"></div>
 
-        {/* Three Card Display - Center Large, Sides Small */}
+        {/* Three Card Display - Center Large, Sides Blue Boxes Only */}
         <div className="flex items-start justify-center gap-8 mb-20 overflow-hidden">
-          {/* Left Card - Smaller */}
+          {/* Left Card - Blue Box Only */}
           {activeSlide > 0 && (
             <div className="w-full max-w-sm opacity-60 transform scale-75 origin-top">
               <div 
-                className="w-full h-[375px] mb-6"
+                className="w-full h-[375px]"
                 style={{
                   background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
                 }}
               />
-              <div className="text-white">
-                <h3 className="text-xl font-bold mb-3 leading-tight h-[60px] flex items-center">
-                  {features[activeSlide - 1].number}. {features[activeSlide - 1].title}
-                </h3>
-                <p className="text-xs leading-relaxed text-white/70 line-clamp-4">
-                  {features[activeSlide - 1].content}
-                </p>
-              </div>
             </div>
           )}
 
-          {/* Center Card - Full Size */}
+          {/* Center Card - Full Size (Unchanged) */}
           <div className="w-full max-w-4xl">
             <div 
               className="w-full h-[500px] mb-8"
@@ -137,23 +129,15 @@ const ManageSubscriptionsCarousel = () => {
             </div>
           </div>
 
-          {/* Right Card - Smaller */}
+          {/* Right Card - Blue Box Only */}
           {activeSlide < features.length - 1 && (
             <div className="w-full max-w-sm opacity-60 transform scale-75 origin-top">
               <div 
-                className="w-full h-[375px] mb-6"
+                className="w-full h-[375px]"
                 style={{
                   background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
                 }}
               />
-              <div className="text-white">
-                <h3 className="text-xl font-bold mb-3 leading-tight h-[60px] flex items-center">
-                  {features[activeSlide + 1].number}. {features[activeSlide + 1].title}
-                </h3>
-                <p className="text-xs leading-relaxed text-white/70 line-clamp-4">
-                  {features[activeSlide + 1].content}
-                </p>
-              </div>
             </div>
           )}
         </div>
