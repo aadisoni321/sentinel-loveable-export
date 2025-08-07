@@ -71,10 +71,11 @@ const PricingSection = () => {
           {/* Free */}
           <article className="relative border border-border bg-card text-card-foreground p-8 md:p-10 shadow-sm">
             <Badge variant="secondary" className="mb-6">Free</Badge>
+            <div aria-hidden className="h-1.5 w-12 rounded bg-muted mb-4" />
             <div className="space-y-2">
               <div className="text-5xl md:text-6xl font-extrabold">$0</div>
               <p className="text-muted-foreground">per month, no credit card required</p>
-              <div className="h-px w-full bg-border my-6" />
+              <div className="h-px w-full bg-border my-8" />
             </div>
 
             <div className="space-y-3 mb-8">
@@ -89,6 +90,7 @@ const PricingSection = () => {
             <div className="flex flex-wrap gap-3">
               <Button variant="secondary" className="px-5">Start free</Button>
             </div>
+            <div aria-hidden className="mt-2 h-2 w-32 rounded bg-muted" />
           </article>
 
           {/* Pro - highlighted */}
@@ -113,7 +115,7 @@ const PricingSection = () => {
                 )}
               </div>
               <p className="text-muted-foreground mt-2">{secondaryLine}</p>
-              <div className="h-px w-full bg-border my-6" />
+              <div className="h-px w-full bg-border my-8" />
             </div>
 
             <div className="relative space-y-3 mb-8">
