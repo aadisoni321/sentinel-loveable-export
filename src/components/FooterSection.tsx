@@ -1,6 +1,6 @@
 import { Instagram, MessageCircle, Linkedin, Mail, ArrowUp } from "lucide-react";
 import { useEffect, useRef } from "react";
-import "@/styles/glitch-animations.css";
+import "@/styles/sentinel-hover.css";
 
 const FooterSection = () => {
   const scrollToTop = () => {
@@ -158,7 +158,7 @@ const FooterSection = () => {
       </div>
 
       {/* Final Blue Section */}
-      <div id="footer-blue" className="bg-electric-blue py-12 md:py-16 flex items-center justify-center relative overflow-hidden">
+      <div id="footer-blue" className="bg-electric-blue py-8 md:py-12 flex items-center justify-center relative overflow-hidden">
         <div
           ref={riseRef}
           className="transform-gpu will-change-transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
@@ -166,9 +166,9 @@ const FooterSection = () => {
           aria-hidden="true"
         >
           <h2 
-            className="text-[clamp(8rem,20vw,24rem)] font-extrabold text-pure-white tracking-[4px] select-none footer-sentinel-text"
+            className="text-[clamp(5rem,12vw,14rem)] font-extrabold text-pure-white tracking-[4px] select-none footer-sentinel-text"
           >
-            <span className="footer-glitch" data-text="SENTINEL">SENTINEL</span>
+            <span className="sentinel-neo" data-text="SENTINEL">SENTINEL<span className="shine" /></span>
           </h2>
         </div>
       </div>

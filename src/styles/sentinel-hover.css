@@ -1,0 +1,106 @@
+/* Sentinel footer hover effect - Neo Prism Sweep
+   - Subtle chromatic aberration + shimmering prism sweep
+   - GPU-friendly transforms, reduced-motion safe
+*/
+
+.sentinel-neo {
+  position: relative;
+  display: inline-block;
+  will-change: transform, filter;
+  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              letter-spacing 300ms cubic-bezier(0.22, 1, 0.36, 1),
+              filter 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Chromatic layers */
+.sentinel-neo::before,
+.sentinel-neo::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, filter, background-position;
+}
+
+/* Cyan layer */
+.sentinel-neo::before {
+  color: hsl(var(--primary));
+  filter: blur(0.5px);
+  transform: translate3d(-2px, 0, 0);
+}
+
+/* Magenta/Accent layer */
+.sentinel-neo::after {
+  color: hsl(var(--accent));
+  filter: blur(0.5px);
+  transform: translate3d(2px, 0, 0);
+}
+
+/* Shine sweep using gradient clipped to text on a nested span */
+.sentinel-neo > .shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg,
+    transparent 0%,
+    hsl(var(--primary) / 0.15) 35%,
+    hsl(var(--primary) / 0.45) 50%,
+    hsl(var(--primary) / 0.15) 65%,
+    transparent 100%);
+  background-size: 200% 100%;
+  mix-blend-mode: screen;
+  opacity: 0;
+  -webkit-mask-image: linear-gradient(#000, #000);
+  mask-image: linear-gradient(#000, #000);
+  will-change: background-position, opacity;
+}
+
+/* Hover interactions */
+.sentinel-neo:hover {
+  transform: translate3d(0, -2px, 0) scale(1.01);
+  letter-spacing: 0.03em;
+  filter: drop-shadow(0 10px 30px hsl(var(--primary) / 0.35));
+}
+.sentinel-neo:hover::before,
+.sentinel-neo:hover::after { opacity: 1; }
+
+.sentinel-neo:hover::before { animation: aberration-left 700ms steps(10, end) infinite; }
+.sentinel-neo:hover::after { animation: aberration-right 700ms steps(10, end) infinite; }
+.sentinel-neo:hover > .shine {
+  opacity: 1;
+  animation: shine-sweep 1.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes aberration-left {
+  0% { transform: translate3d(-1px, 0, 0); }
+  25% { transform: translate3d(-3px, -0.5px, 0); }
+  50% { transform: translate3d(-2px, 0.5px, 0); }
+  75% { transform: translate3d(-4px, -0.5px, 0); }
+  100% { transform: translate3d(-1px, 0, 0); }
+}
+@keyframes aberration-right {
+  0% { transform: translate3d(1px, 0, 0); }
+  25% { transform: translate3d(3px, 0.5px, 0); }
+  50% { transform: translate3d(2px, -0.5px, 0); }
+  75% { transform: translate3d(4px, 0.5px, 0); }
+  100% { transform: translate3d(1px, 0, 0); }
+}
+@keyframes shine-sweep {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sentinel-neo,
+  .sentinel-neo::before,
+  .sentinel-neo::after,
+  .sentinel-neo > .shine {
+    animation: none !important;
+    transition: none !important;
+  }
+  .sentinel-neo:hover { transform: none; letter-spacing: normal; filter: none; }
+  .sentinel-neo:hover::before,
+  .sentinel-neo:hover::after,
+  .sentinel-neo:hover > .shine { opacity: 0; }
+}
