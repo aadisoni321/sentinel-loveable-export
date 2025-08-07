@@ -253,43 +253,64 @@ body.scroll-locked {
 }
 
 /* CAROUSEL SLIDE ANIMATIONS - ABRUPT AND VISIBLE */
-@keyframes slide-in-from-right {
+@keyframes slide-in-left {
   from {
-    transform: translateX(150%) translateY(30px);
+    transform: translateX(-100px);
+    opacity: 0;
   }
   to {
-    transform: translateX(0) translateY(0);
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
-@keyframes slide-in-from-left {
+@keyframes slide-in-right {
   from {
-    transform: translateX(-150%) translateY(30px);
+    transform: translateX(100px);
+    opacity: 0;
   }
   to {
-    transform: translateX(0) translateY(0);
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
-@keyframes slide-up-center {
+@keyframes slide-in-center {
   from {
-    transform: translateY(50px) scale(0.95);
+    transform: translateY(50px) scale(0.9);
+    opacity: 0;
   }
   to {
     transform: translateY(0) scale(1);
+    opacity: 1;
   }
 }
 
-.animate-slide-in-from-right {
-  animation: slide-in-from-right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+@keyframes fade-in-text {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.animate-slide-in-from-left {
-  animation: slide-in-from-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.animate-slide-up-center {
-  animation: slide-up-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in-center {
+  animation: slide-in-center 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-text {
+  animation: fade-in-text 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
 }
 
 .animation-delay-100 {

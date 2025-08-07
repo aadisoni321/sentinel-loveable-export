@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const ManageSubscriptionsCarousel = () => {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const features = [
     {
@@ -38,14 +39,18 @@ const ManageSubscriptionsCarousel = () => {
   ];
 
   const nextSlide = () => {
-    if (activeSlide < features.length - 1) {
+    if (activeSlide < features.length - 1 && !isAnimating) {
+      setIsAnimating(true);
       setActiveSlide(activeSlide + 1);
+      setTimeout(() => setIsAnimating(false), 600);
     }
   };
 
   const prevSlide = () => {
-    if (activeSlide > 0) {
+    if (activeSlide > 0 && !isAnimating) {
+      setIsAnimating(true);
       setActiveSlide(activeSlide - 1);
+      setTimeout(() => setIsAnimating(false), 600);
     }
   };
 
@@ -92,12 +97,12 @@ const ManageSubscriptionsCarousel = () => {
         <div className="w-full h-px bg-white/20 mb-12"></div>
 
         {/* Full Width Three Card Display */}
-        <div className="relative w-full mb-20 overflow-hidden">
-          {/* Left Card - Slides in from right, out to left */}
+        <div className="relative w-full mb-20 overflow-hidden min-h-[600px]">
+          {/* Left Card - Only shows image, no text */}
           {activeSlide > 0 && (
             <div 
               key={`left-${activeSlide}`}
-              className="absolute left-0 top-0 w-[300px] opacity-100 animate-slide-in-from-right"
+              className="absolute left-0 top-0 w-[300px] opacity-100 animate-slide-in-left"
             >
               <div 
                 className="w-full h-[350px]"
@@ -105,22 +110,14 @@ const ManageSubscriptionsCarousel = () => {
                   background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
                 }}
               />
-              <div className="mt-4 text-white animate-slide-in-from-right animation-delay-200">
-                <h4 className="text-lg font-semibold mb-2">
-                  {features[activeSlide - 1].number}. {features[activeSlide - 1].title}
-                </h4>
-                <p className="text-xs text-white/70 line-clamp-3">
-                  {features[activeSlide - 1].content}
-                </p>
-              </div>
             </div>
           )}
 
-          {/* Center Card - Always centered with slide animations */}
+          {/* Center Card - Shows image and text */}
           <div className="flex justify-center">
             <div 
               key={`center-${activeSlide}`}
-              className="w-[800px] animate-slide-up-center"
+              className="w-[800px] animate-slide-in-center"
             >
               <div 
                 className="w-full h-[500px] mb-8"
@@ -129,7 +126,7 @@ const ManageSubscriptionsCarousel = () => {
                 }}
               />
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white animate-slide-up-center animation-delay-100">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white animate-fade-in-text">
                 <div>
                   <h3 className="text-3xl font-bold mb-4 leading-tight h-[80px] flex items-center">
                     {features[activeSlide].number}. {features[activeSlide].title}
@@ -145,11 +142,11 @@ const ManageSubscriptionsCarousel = () => {
             </div>
           </div>
 
-          {/* Right Card - Slides in from right, out to left */}
+          {/* Right Card - Only shows image, no text */}
           {activeSlide < features.length - 1 && (
             <div 
               key={`right-${activeSlide}`}
-              className="absolute right-0 top-0 w-[300px] opacity-100 animate-slide-in-from-left"
+              className="absolute right-0 top-0 w-[300px] opacity-100 animate-slide-in-right"
             >
               <div 
                 className="w-full h-[350px]"
@@ -157,14 +154,6 @@ const ManageSubscriptionsCarousel = () => {
                   background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
                 }}
               />
-              <div className="mt-4 text-white animate-slide-in-from-left animation-delay-200">
-                <h4 className="text-lg font-semibold mb-2">
-                  {features[activeSlide + 1].number}. {features[activeSlide + 1].title}
-                </h4>
-                <p className="text-xs text-white/70 line-clamp-3">
-                  {features[activeSlide + 1].content}
-                </p>
-              </div>
             </div>
           )}
         </div>
