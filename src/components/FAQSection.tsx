@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 const FAQSection = () => {
+  const [hoveredRow, setHoveredRow] = useState<'top' | 'bottom' | null>(null);
+
   const faqItems = [
     "How accurate is Sentinel's subscription detection?",
     "Can I cancel subscriptions directly through Sentinel?",
@@ -30,13 +34,21 @@ const FAQSection = () => {
         {/* FAQ Animation */}
         <div className="space-y-6 overflow-hidden">
           {/* Top Row - Sliding Left */}
-          <div className="flex gap-6 animate-scroll-left">
+          <div 
+            className={`flex gap-6 ${hoveredRow === 'top' ? '' : 'animate-scroll-left'}`}
+            onMouseEnter={() => setHoveredRow('top')}
+            onMouseLeave={() => setHoveredRow(null)}
+          >
             {Array.from({ length: 50 }, (_, i) => faqItems[i % faqItems.length]).map((question, index) => (
               <div
                 key={`top-${index}`}
-                className="bg-[#222222] rounded-xl p-6 h-[140px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-white/30 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
+                className="group bg-[#222222] rounded-xl p-6 h-[140px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-blue-400/50 transition-all duration-300 cursor-pointer relative overflow-hidden
+                hover:bg-gradient-to-br hover:from-blue-900/30 hover:via-blue-800/20 hover:to-purple-900/30
+                hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]
+                hover:scale-105"
               >
-                <p className="text-light-gray text-xl leading-relaxed text-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-blue-400/5 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <p className="text-light-gray group-hover:text-blue-100 text-xl leading-relaxed text-center relative z-10 transition-colors duration-300">
                   {question}
                 </p>
               </div>
@@ -44,13 +56,21 @@ const FAQSection = () => {
           </div>
           
           {/* Bottom Row - Sliding Right */}
-          <div className="flex gap-6 animate-scroll-right">
+          <div 
+            className={`flex gap-6 ${hoveredRow === 'bottom' ? '' : 'animate-scroll-right'}`}
+            onMouseEnter={() => setHoveredRow('bottom')}
+            onMouseLeave={() => setHoveredRow(null)}
+          >
             {Array.from({ length: 50 }, (_, i) => faqItems[(i + 8) % faqItems.length]).map((question, index) => (
               <div
                 key={`bottom-${index}`}
-                className="bg-[#222222] rounded-xl p-6 h-[140px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-white/30 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
+                className="group bg-[#222222] rounded-xl p-6 h-[140px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-blue-400/50 transition-all duration-300 cursor-pointer relative overflow-hidden
+                hover:bg-gradient-to-br hover:from-blue-900/30 hover:via-blue-800/20 hover:to-purple-900/30
+                hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]
+                hover:scale-105"
               >
-                <p className="text-light-gray text-xl leading-relaxed text-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-blue-400/5 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <p className="text-light-gray group-hover:text-blue-100 text-xl leading-relaxed text-center relative z-10 transition-colors duration-300">
                   {question}
                 </p>
               </div>
