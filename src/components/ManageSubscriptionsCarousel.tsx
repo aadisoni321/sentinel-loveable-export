@@ -91,10 +91,30 @@ const ManageSubscriptionsCarousel = () => {
         {/* Thin Separator Line */}
         <div className="w-full h-px bg-white/20 mb-12"></div>
 
-        {/* Single Card Display */}
-        <div className="flex justify-center mb-20">
+        {/* Three Card Display - Center Large, Sides Small */}
+        <div className="flex items-start justify-center gap-8 mb-20 overflow-hidden">
+          {/* Left Card - Smaller */}
+          {activeSlide > 0 && (
+            <div className="w-full max-w-sm opacity-60 transform scale-75 origin-top">
+              <div 
+                className="w-full h-[375px] mb-6"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
+                }}
+              />
+              <div className="text-white">
+                <h3 className="text-xl font-bold mb-3 leading-tight h-[60px] flex items-center">
+                  {features[activeSlide - 1].number}. {features[activeSlide - 1].title}
+                </h3>
+                <p className="text-xs leading-relaxed text-white/70 line-clamp-4">
+                  {features[activeSlide - 1].content}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Center Card - Full Size */}
           <div className="w-full max-w-4xl">
-            {/* Blue Box - Empty - Doubled Height */}
             <div 
               className="w-full h-[500px] mb-8"
               style={{
@@ -102,16 +122,13 @@ const ManageSubscriptionsCarousel = () => {
               }}
             />
             
-            {/* Content Below - Two Column Layout */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
-              {/* Left Column - Title (Always 2 lines) */}
               <div>
                 <h3 className="text-3xl font-bold mb-4 leading-tight h-[80px] flex items-center">
                   {features[activeSlide].number}. {features[activeSlide].title}
                 </h3>
               </div>
               
-              {/* Right Column - Description (Smaller text) */}
               <div className="md:col-span-2">
                 <p className="text-sm leading-relaxed text-white/90">
                   {features[activeSlide].content}
@@ -119,6 +136,26 @@ const ManageSubscriptionsCarousel = () => {
               </div>
             </div>
           </div>
+
+          {/* Right Card - Smaller */}
+          {activeSlide < features.length - 1 && (
+            <div className="w-full max-w-sm opacity-60 transform scale-75 origin-top">
+              <div 
+                className="w-full h-[375px] mb-6"
+                style={{
+                  background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
+                }}
+              />
+              <div className="text-white">
+                <h3 className="text-xl font-bold mb-3 leading-tight h-[60px] flex items-center">
+                  {features[activeSlide + 1].number}. {features[activeSlide + 1].title}
+                </h3>
+                <p className="text-xs leading-relaxed text-white/70 line-clamp-4">
+                  {features[activeSlide + 1].content}
+                </p>
+              </div>
+            </div>
+          )}
         </div>
 
       </div>
