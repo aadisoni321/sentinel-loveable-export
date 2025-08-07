@@ -1,123 +1,121 @@
-import { useState } from "react";
 import { Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const features = {
+  free: [
+    "Track up to 5 subscriptions",
+    "Smart renewal alerts",
+    "Basic spending insights"
+  ],
+  pro: [
+    "Unlimited subscriptions",
+    "One-tap cancellations",
+    "Advanced analytics & trends",
+    "Bank-grade security",
+    "Priority support"
+  ],
+  ultra: [
+    "Everything in Pro",
+    "Team/workspace support",
+    "Custom export & integrations",
+    "Dedicated success manager"
+  ]
+};
 
 const PricingSection = () => {
-  const [isYearly, setIsYearly] = useState(false);
-
   return (
-    <section className="bg-pure-black py-[120px] px-4 md:px-8 lg:px-[120px] relative">
-      {/* Dot Grid Pattern Behind Heading Only */}
-      <div 
-        className="absolute top-[120px] left-1/2 transform -translate-x-1/2 w-[400px] h-[100px] opacity-10"
-        style={{
-          backgroundImage: `radial-gradient(circle at center, white 1px, transparent 1px)`,
-          backgroundSize: '20px 20px'
-        }}
-      />
-      
-      <div className="max-w-[1000px] mx-auto relative z-10">
-        {/* Header */}
-        <div className="text-center mb-[60px]">
-          <h2 className="text-[64px] font-bold text-pure-white mb-8">Pricing</h2>
-          <p className="text-xl text-light-gray">
-            Get started for Free. Upgrade to increase limits.
+    <section id="pricing" className="bg-background py-24 px-4 md:px-8 lg:px-24">
+      <div className="max-w-6xl mx-auto">
+        <header className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">Individual Plans</h2>
+          <p className="text-base md:text-lg text-muted-foreground mt-3">
+            Get started for free and upgrade as your needs grow.
           </p>
-        </div>
+        </header>
 
-        {/* Pricing Toggle */}
-        <div className="flex justify-center mb-20">
-          <div className="bg-[#333333] rounded-3xl p-1 border border-[#555555] w-[300px] h-12">
-            <div className="relative w-full h-full">
-              <div
-                className={`absolute top-0 h-full w-1/2 bg-electric-blue rounded-3xl transition-transform duration-300 ${
-                  isYearly ? 'translate-x-full' : 'translate-x-0'
-                }`}
-              />
-              <div className="relative flex h-full">
-                <button
-                  onClick={() => setIsYearly(false)}
-                  className={`flex-1 text-base font-medium transition-colors duration-300 ${
-                    !isYearly ? 'text-pure-white' : 'text-light-gray'
-                  }`}
-                >
-                  Monthly
-                </button>
-                <button
-                  onClick={() => setIsYearly(true)}
-                  className={`flex-1 text-base font-medium transition-colors duration-300 ${
-                    isYearly ? 'text-pure-white' : 'text-light-gray'
-                  }`}
-                >
-                  Yearly <span className="text-electric-blue">Save 25%</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Pricing Cards */}
-        <div className="flex flex-col lg:flex-row gap-10 justify-center">
-          {/* Free Plan */}
-          <div className="w-full lg:w-[400px] h-[600px] bg-[#2A2A2A] border border-[#444444] rounded-2xl p-10 shadow-lg">
-            <div className="bg-[#444444] text-pure-white text-sm font-semibold px-4 py-2 rounded-md inline-block mb-8">
-              Free
-            </div>
-            
-            <div className="mb-8">
-              <div className="text-[72px] font-bold text-pure-white mb-2">$0</div>
-              <div className="text-base text-light-gray">per month, no credit card required</div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {/* Free */}
+          <article className="relative border border-border bg-card text-card-foreground p-8 md:p-10 shadow-sm">
+            <div className="space-y-2">
+              <h3 className="text-xl font-semibold">Hobby</h3>
+              <div className="text-5xl md:text-6xl font-extrabold">Free</div>
+              <div className="h-px w-full bg-border my-6" />
             </div>
 
-            <button className="w-full bg-[#555555] text-pure-white py-4 rounded-xl text-lg font-semibold mb-8 hover:bg-[#666666] transition-colors duration-300">
-              Get Started
-            </button>
-
-            <div className="space-y-4">
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-electric-blue" />
-                  <span className="text-light-gray">write</span>
+            <div className="space-y-3 mb-8">
+              {features.free.map((f) => (
+                <div key={f} className="flex items-start gap-3 text-sm md:text-base text-muted-foreground">
+                  <Check className="size-5 text-primary mt-0.5" />
+                  <span>{f}</span>
                 </div>
               ))}
             </div>
-          </div>
 
-          {/* Pro Plan */}
-          <div className="w-full lg:w-[400px] h-[600px] bg-[#2A2A2A] border border-electric-blue/50 rounded-2xl p-10 shadow-xl relative">
-            {/* Blue glow effect */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-electric-blue/20 to-blue-hover/20 rounded-2xl blur-sm" />
-            <div className="relative bg-[#2A2A2A] rounded-2xl h-full p-0">
-              <div className="bg-electric-blue text-pure-white text-sm font-semibold px-4 py-2 rounded-md inline-block mb-8">
-                Pro
-              </div>
-              
-              <div className="mb-8">
-                <div className="text-[72px] font-bold text-pure-white mb-2">$5</div>
-                <div className="text-base text-light-gray">per month, billed yearly</div>
-              </div>
-
-              <button className="w-full bg-electric-blue text-pure-white py-4 rounded-xl text-lg font-semibold mb-4 hover:bg-blue-hover transition-colors duration-300">
-                Get Started
-              </button>
-
-              {/* Payment Icons */}
-              <div className="flex justify-center gap-3 mb-8">
-                <div className="w-8 h-6 bg-[#1A1F71] rounded text-white text-xs flex items-center justify-center font-bold">P</div>
-                <div className="w-8 h-6 bg-[#1A237E] rounded text-white text-xs flex items-center justify-center">V</div>
-                <div className="w-8 h-6 bg-[#EB001B] rounded text-white text-xs flex items-center justify-center">M</div>
-                <div className="w-8 h-6 bg-[#006FCF] rounded text-white text-xs flex items-center justify-center">A</div>
-              </div>
-
-              <div className="space-y-4">
-                {[1, 2, 3].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <Check className="w-5 h-5 text-electric-blue" />
-                    <span className="text-light-gray">write</span>
-                  </div>
-                ))}
-              </div>
+            <div className="flex flex-wrap gap-3">
+              <Button variant="secondary" className="px-5">Get Started</Button>
+              <Button variant="outline" className="px-5">More info</Button>
             </div>
-          </div>
+          </article>
+
+          {/* Pro - highlighted */}
+          <article className="relative border border-primary/40 bg-card text-card-foreground p-8 md:p-10 shadow-sm overflow-hidden">
+            {/* gradient glow accent */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 opacity-80"
+              style={{
+                background:
+                  "radial-gradient(120% 80% at 80% 120%, hsla(var(--primary),0.35) 0%, transparent 45%), radial-gradient(120% 80% at 10% 110%, hsla(var(--primary),0.12) 0%, transparent 55%)"
+              }}
+            />
+            <div className="relative space-y-2">
+              <h3 className="text-xl font-semibold">Pro</h3>
+              <div className="flex items-end gap-2">
+                <div className="text-5xl md:text-6xl font-extrabold">$20</div>
+                <span className="text-muted-foreground mb-2">/mo</span>
+              </div>
+              <div className="h-px w-full bg-border my-6" />
+            </div>
+
+            <div className="relative space-y-3 mb-8">
+              {features.pro.map((f) => (
+                <div key={f} className="flex items-start gap-3 text-sm md:text-base text-muted-foreground">
+                  <Check className="size-5 text-primary mt-0.5" />
+                  <span>{f}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="relative flex flex-wrap gap-3">
+              <Button className="px-5">Get Pro</Button>
+              <Button variant="outline" className="px-5">More info ↗</Button>
+            </div>
+          </article>
+
+          {/* Ultra */}
+          <article className="relative border border-border bg-card text-card-foreground p-8 md:p-10 shadow-sm">
+            <div className="space-y-2">
+              <h3 className="text-xl font-semibold">Ultra</h3>
+              <div className="flex items-end gap-2">
+                <div className="text-5xl md:text-6xl font-extrabold">$200</div>
+                <span className="text-muted-foreground mb-2">/mo</span>
+              </div>
+              <div className="h-px w-full bg-border my-6" />
+            </div>
+
+            <div className="space-y-3 mb-8">
+              {features.ultra.map((f) => (
+                <div key={f} className="flex items-start gap-3 text-sm md:text-base text-muted-foreground">
+                  <Check className="size-5 text-primary mt-0.5" />
+                  <span>{f}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <Button variant="secondary" className="px-5">Get Ultra</Button>
+            </div>
+          </article>
         </div>
       </div>
     </section>
