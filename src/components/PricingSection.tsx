@@ -95,15 +95,6 @@ const PricingSection = () => {
 
           {/* Pro - highlighted */}
           <article className="relative border border-primary/60 bg-card text-card-foreground p-8 md:p-10 shadow-sm overflow-hidden">
-            {/* glow */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-0 opacity-80"
-              style={{
-                background:
-                  "radial-gradient(120% 80% at 80% 120%, hsla(var(--primary),0.35) 0%, transparent 45%), radial-gradient(120% 80% at 10% 110%, hsla(var(--primary),0.12) 0%, transparent 55%)",
-              }}
-            />
             <div className="relative">
               <Badge className="mb-4">Pro</Badge>
               <div className="flex items-center gap-3">
