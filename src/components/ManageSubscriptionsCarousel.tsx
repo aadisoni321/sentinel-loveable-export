@@ -92,30 +92,38 @@ const ManageSubscriptionsCarousel = () => {
         <div className="w-full h-px bg-white/20 mb-12"></div>
 
         {/* Full Width Three Card Display */}
-        <div className="relative w-full mb-20">
-          {/* Left Card - Absolute positioned to left edge */}
+        <div className="relative w-full mb-20 overflow-hidden">
+          {/* Left Card - Slides in from right, out to left */}
           {activeSlide > 0 && (
-            <div className="absolute left-0 top-0 w-[300px] opacity-60">
+            <div className="absolute left-0 top-0 w-[300px] opacity-60 transition-all duration-700 ease-in-out transform animate-slide-in-left">
               <div 
-                className="w-full h-[350px]"
+                className="w-full h-[350px] transition-all duration-700 ease-in-out"
                 style={{
                   background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
                 }}
               />
+              <div className="mt-4 text-white opacity-0 animate-fade-in animation-delay-300">
+                <h4 className="text-lg font-semibold mb-2">
+                  {features[activeSlide - 1].number}. {features[activeSlide - 1].title}
+                </h4>
+                <p className="text-xs text-white/70 line-clamp-3">
+                  {features[activeSlide - 1].content}
+                </p>
+              </div>
             </div>
           )}
 
-          {/* Center Card - Always centered */}
+          {/* Center Card - Always centered with smooth transitions */}
           <div className="flex justify-center">
-            <div className="w-[800px]">
+            <div className="w-[800px] transition-all duration-500 ease-in-out">
               <div 
-                className="w-full h-[500px] mb-8"
+                className="w-full h-[500px] mb-8 transition-all duration-500 ease-in-out"
                 style={{
                   background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
                 }}
               />
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white transition-all duration-500 ease-in-out">
                 <div>
                   <h3 className="text-3xl font-bold mb-4 leading-tight h-[80px] flex items-center">
                     {features[activeSlide].number}. {features[activeSlide].title}
@@ -131,15 +139,23 @@ const ManageSubscriptionsCarousel = () => {
             </div>
           </div>
 
-          {/* Right Card - Absolute positioned to right edge */}
+          {/* Right Card - Slides in from right, out to left */}
           {activeSlide < features.length - 1 && (
-            <div className="absolute right-0 top-0 w-[300px] opacity-60">
+            <div className="absolute right-0 top-0 w-[300px] opacity-60 transition-all duration-700 ease-in-out transform animate-slide-in-right">
               <div 
-                className="w-full h-[350px]"
+                className="w-full h-[350px] transition-all duration-700 ease-in-out"
                 style={{
                   background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
                 }}
               />
+              <div className="mt-4 text-white opacity-0 animate-fade-in animation-delay-300">
+                <h4 className="text-lg font-semibold mb-2">
+                  {features[activeSlide + 1].number}. {features[activeSlide + 1].title}
+                </h4>
+                <p className="text-xs text-white/70 line-clamp-3">
+                  {features[activeSlide + 1].content}
+                </p>
+              </div>
             </div>
           )}
         </div>

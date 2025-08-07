@@ -252,6 +252,80 @@ body.scroll-locked {
   }
 }
 
+/* CAROUSEL SLIDE ANIMATIONS */
+@keyframes slide-in-left {
+  from {
+    transform: translateX(100%) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) translateY(0);
+    opacity: 0.6;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translateX(-100%) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) translateY(0);
+    opacity: 0.6;
+  }
+}
+
+@keyframes slide-out-left {
+  from {
+    transform: translateX(0) translateY(0);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(-100%) translateY(-20px);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translateX(0) translateY(0);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateX(100%) translateY(-20px);
+    opacity: 0;
+  }
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.7s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.7s ease-out forwards;
+}
+
+.animate-slide-out-left {
+  animation: slide-out-left 0.7s ease-out forwards;
+}
+
+.animate-slide-out-right {
+  animation: slide-out-right 0.7s ease-out forwards;
+}
+
+.animation-delay-300 {
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+/* Text line clamp utility */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* Remove all rounded corners globally */
 .btn-primary, .btn-secondary, button, input, textarea, select, div[class*="rounded"] {
   border-radius: 0 !important;
