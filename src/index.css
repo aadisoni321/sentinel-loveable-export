@@ -347,3 +347,18 @@ body.scroll-locked {
     @apply bg-background text-foreground;
   }
 }
+
+/* Gradient text utility and tokens */
+@layer base {
+  :root {
+    --gradient-calm-from: 0 0% 100%;
+    --gradient-calm-to: 210 90% 78%;
+  }
+}
+
+@layer utilities {
+  .text-gradient-calm {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(90deg, hsl(var(--gradient-calm-from)) 0%, hsl(var(--gradient-calm-to)) 100%);
+  }
+}

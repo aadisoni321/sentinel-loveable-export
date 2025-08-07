@@ -73,7 +73,7 @@ const HorizontalScrollingFeatures = () => {
         >
           {/* Title Section - Now part of scrolling animation */}
           <div className="w-[500px] flex-shrink-0 flex items-center">
-            <h2 className="text-4xl font-bold text-white leading-tight max-w-sm">
+            <h2 className="text-4xl font-bold text-gradient-calm leading-tight max-w-sm">
               What You'll Unlock<br />with Sentinel
             </h2>
           </div>
