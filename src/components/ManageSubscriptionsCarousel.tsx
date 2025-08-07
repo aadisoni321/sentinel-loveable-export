@@ -8,7 +8,7 @@ const ManageSubscriptionsCarousel = () => {
     {
       id: 0,
       number: "1",
-      title: "Track Subscriptions\nAutomatically",
+      title: "Track Subscriptions",
       content: "Sentinel monitors trials, subscriptions, and renewal patterns from the moment you sign up. It intelligently tracks confirmation emails, billing patterns, and known services—keeping your dashboard up to date without needing access to your financial data. Our advanced detection algorithms work seamlessly in the background, ensuring comprehensive coverage of all your subscription activities while maintaining complete privacy and security of your personal information."
     },
     {
