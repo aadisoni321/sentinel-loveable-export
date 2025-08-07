@@ -24,7 +24,7 @@ const PricingSection = () => {
 
   const displayPrice = isMonthly ? "$3" : "$90";
   const secondaryLine = isMonthly
-    ? "$10 from the second month, billed monthly"
+    ? "$6 from the second month, billed monthly"
     : "Billed annually (equivalent to $7.50/mo)";
 
   return (
