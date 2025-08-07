@@ -15,7 +15,7 @@ const ManageSubscriptionsCarousel = () => {
       id: 1,
       number: "2",
       title: "One-Click\nCancellation",
-      content: "Easily cancel unwanted subscriptions in seconds—no login hoops, customer service calls, or hidden steps. Sentinel handles service-specific flows behind the scenes, giving you a simple 'cancel' button that just works."
+      content: "Easily cancel unwanted subscriptions in seconds—no login hoops, customer service calls, or hidden steps. Sentinel handles service-specific flows behind the scenes, giving you a simple 'cancel' button that just works. Our system automatically detects cancellation pathways and handles the complex navigation through various subscription platforms, making what used to be a frustrating process completely seamless."
     },
     {
       id: 2,
@@ -27,13 +27,13 @@ const ManageSubscriptionsCarousel = () => {
       id: 3,
       number: "4",
       title: "Analytics & Usage\nInsights",
-      content: "See which subscriptions you use and which you don't. Sentinel passively collects usage signals like login frequency or inactivity periods, helping you identify services you forget about or no longer need."
+      content: "See which subscriptions you use and which you don't. Sentinel passively collects usage signals like login frequency or inactivity periods, helping you identify services you forget about or no longer need. Our intelligent analytics provide detailed insights into your subscription usage patterns, helping you make informed decisions about which services provide real value to your daily routine."
     },
     {
       id: 4,
       number: "5",
-      title: "Renewal & Trial\nAlerts",
-      content: "Get notified before you're charged—not after. Sentinel sends alerts for upcoming renewals, trial expirations, and billing changes via email, SMS, or calendar sync."
+      title: "Renewal &\nTrial Alerts",
+      content: "Get notified before you're charged—not after. Sentinel sends alerts for upcoming renewals, trial expirations, and billing changes via email, SMS, or calendar sync. Never be surprised by unexpected charges again with our comprehensive notification system that keeps you informed about every important subscription event well in advance."
     }
   ];
 
