@@ -1,12 +1,60 @@
 import { Instagram, MessageCircle, Linkedin, Mail, ArrowUp } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const FooterSection = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const riseRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    if (prefersReduced) return;
+
+    const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+    const clamp = (n: number, min = 0, max = 1) => Math.min(max, Math.max(min, n));
+
+    const apply = () => {
+      const doc = document.documentElement;
+      const maxScroll = doc.scrollHeight - window.innerHeight;
+      const y = window.scrollY || doc.scrollTop || 0;
+      const start = 0.8; // start reveal at 80%
+      const raw = maxScroll > 0 ? (y / maxScroll - start) / (1 - start) : 0;
+      const t = easeOutCubic(clamp(raw));
+      const offset = (1 - t) * 40; // 40% -> 0%
+      if (riseRef.current) {
+        riseRef.current.style.transform = `translate3d(0, ${offset}%, 0)`;
+      }
+    };
+
+    const onScroll = () => {
+      requestAnimationFrame(apply);
+    };
+
+    // observe footer so we only compute near the bottom
+    const blue = document.getElementById("footer-blue");
+    let observer: IntersectionObserver | null = null;
+    if (blue) {
+      observer = new IntersectionObserver(
+        () => requestAnimationFrame(apply),
+        { threshold: [0, 0.5, 1], rootMargin: "0px 0px -20%" }
+      );
+      observer.observe(blue);
+    }
+
+    apply();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      observer?.disconnect();
+    };
+  }, []);
+
   return (
-    <footer className="fixed inset-x-0 bottom-0 -z-10 bg-pure-black">
+    <footer className="bg-pure-black">
       {/* Main Footer */}
       <div className="border-t border-white/10 py-[60px] px-4 md:px-8 lg:px-20">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -110,24 +158,31 @@ const FooterSection = () => {
 
       {/* Final Blue Section */}
       <div id="footer-blue" className="bg-electric-blue py-[100px] flex items-center justify-center relative overflow-hidden">
-        <h2 
-          className="text-[clamp(8rem,20vw,24rem)] font-extrabold text-pure-white tracking-[4px] select-none footer-sentinel-text transform-gpu transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-          onMouseMove={(e) => {
-            const rect = e.currentTarget.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const angleX = (y - centerY) / 30;
-            const angleY = (centerX - x) / 30;
-            e.currentTarget.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'rotateX(0deg) rotateY(0deg)';
-          }}
+        <div
+          ref={riseRef}
+          className="transform-gpu will-change-transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          style={{ transform: "translate3d(0, 40%, 0)" }}
+          aria-hidden="true"
         >
-          SENTINEL
-        </h2>
+          <h2 
+            className="text-[clamp(8rem,20vw,24rem)] font-extrabold text-pure-white tracking-[4px] select-none footer-sentinel-text"
+            onMouseMove={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              const centerX = rect.width / 2;
+              const centerY = rect.height / 2;
+              const angleX = (y - centerY) / 30;
+              const angleY = (centerX - x) / 30;
+              e.currentTarget.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            }}
+          >
+            SENTINEL
+          </h2>
+        </div>
       </div>
     </footer>
   );
