@@ -87,6 +87,9 @@ const ManageSubscriptionsCarousel = () => {
           </button>
         </div>
 
+        {/* Thin Separator Line */}
+        <div className="w-full h-px bg-white/20 mb-12"></div>
+
         {/* Carousel Container */}
         <div className="relative h-[600px] flex items-center justify-center overflow-hidden mb-20">
           {features.map((feature, index) => (
