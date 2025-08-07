@@ -77,8 +77,8 @@ const FAQSection = () => {
           </div>
         
         {/* Fade Gradients */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-pure-black to-transparent pointer-events-none z-10"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-pure-black to-transparent pointer-events-none z-10"></div>
+        <div className="absolute left-0 -top-8 -bottom-8 w-32 bg-gradient-to-r from-pure-black to-transparent pointer-events-none z-10"></div>
+        <div className="absolute right-0 -top-8 -bottom-8 w-32 bg-gradient-to-l from-pure-black to-transparent pointer-events-none z-10"></div>
         </div>
     </section>
   );
