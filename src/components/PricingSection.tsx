@@ -70,15 +70,19 @@ const PricingSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {/* Free */}
           <article className="relative border border-border bg-card text-card-foreground p-8 md:p-10 shadow-sm">
-            <Badge variant="secondary" className="mb-6">Free</Badge>
-            <div aria-hidden className="h-1.5 w-12 rounded bg-muted mb-4" />
+            <Badge variant="secondary" className="mb-4 bg-muted text-muted-foreground">Free</Badge>
+            
             <div className="space-y-2">
               <div className="text-5xl md:text-6xl font-extrabold">$0</div>
               <p className="text-muted-foreground">per month, no credit card required</p>
               <div className="h-px w-full bg-border my-8" />
             </div>
 
-            <div className="space-y-3 mb-8">
+            <div className="mt-6">
+              <Button variant="secondary" className="w-full h-11 bg-muted text-foreground hover:bg-muted/80">Download TRAE</Button>
+            </div>
+
+            <div className="space-y-3 mt-8">
               {features.free.map((f) => (
                 <div key={f} className="flex items-start gap-3 text-sm md:text-base text-muted-foreground">
                   <Check className="size-5 text-primary mt-0.5" />
@@ -86,23 +90,18 @@ const PricingSection = () => {
                 </div>
               ))}
             </div>
-
-            <div className="flex flex-wrap gap-3">
-              <Button variant="secondary" className="px-5">Start free</Button>
-            </div>
-            <div aria-hidden className="mt-2 h-2 w-32 rounded bg-muted" />
           </article>
 
           {/* Pro - highlighted */}
-          <article className="relative border border-primary/60 bg-card text-card-foreground p-8 md:p-10 shadow-sm overflow-hidden">
+          <article className="relative border-2 border-primary bg-card text-card-foreground p-8 md:p-10 shadow-sm overflow-hidden" style={{ backgroundImage: "radial-gradient(hsla(var(--primary),0.12) 1px, transparent 1px)", backgroundSize: "12px 12px", backgroundPosition: "0 0" }}>
             <div className="relative">
-              <Badge className="mb-4">Pro</Badge>
+              <Badge className="mb-4 bg-primary/15 text-primary border border-primary/40">Pro</Badge>
               <div className="flex items-center gap-3">
                 <div className="text-5xl md:text-6xl font-extrabold">{displayPrice}</div>
                 {isMonthly ? (
-                  <Badge variant="secondary">1st-Month Discount</Badge>
+                  <Badge className="bg-primary/15 text-primary border border-primary/40">1st-Month Discount</Badge>
                 ) : (
-                  <Badge variant="secondary">Save 25%</Badge>
+                  <Badge className="bg-primary/15 text-primary border border-primary/40">Save 25%</Badge>
                 )}
               </div>
               <p className="text-muted-foreground mt-2">{secondaryLine}</p>
