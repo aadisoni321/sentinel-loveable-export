@@ -6,7 +6,7 @@ const FooterSection = () => {
   };
 
   return (
-    <footer className="bg-pure-black">
+    <footer className="fixed inset-x-0 bottom-0 -z-10 bg-pure-black">
       {/* Main Footer */}
       <div className="border-t border-white/10 py-[60px] px-4 md:px-8 lg:px-20">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -109,9 +109,9 @@ const FooterSection = () => {
       </div>
 
       {/* Final Blue Section */}
-      <div className="bg-electric-blue py-[100px] flex items-center justify-center relative overflow-hidden">
+      <div id="footer-blue" className="bg-electric-blue py-[100px] flex items-center justify-center relative overflow-hidden">
         <h2 
-          className="text-[300px] font-extrabold text-pure-white tracking-[4px] cursor-pointer select-none footer-sentinel-text"
+          className="text-[clamp(8rem,20vw,24rem)] font-extrabold text-pure-white tracking-[4px] select-none footer-sentinel-text transform-gpu transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
           onMouseMove={(e) => {
             const rect = e.currentTarget.getBoundingClientRect();
             const x = e.clientX - rect.left;
