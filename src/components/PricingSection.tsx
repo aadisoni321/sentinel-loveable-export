@@ -91,7 +91,7 @@ const PricingSection = () => {
             </div>
 
             <div className="relative flex flex-col gap-4 mt-auto">
-              <Button variant="secondary" className="w-full h-11 bg-muted text-foreground hover:bg-muted/80">Download TRAE</Button>
+              <Button variant="secondary" className="w-full h-11 bg-muted text-foreground hover:bg-muted/80">Get Sentinel</Button>
               <div aria-hidden className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground invisible">
                 <Badge variant="outline">Apple Pay</Badge>
                 <Badge variant="outline">PayPal</Badge>
