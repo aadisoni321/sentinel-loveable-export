@@ -157,7 +157,7 @@ const FooterSection = () => {
       </div>
 
       {/* Final Blue Section */}
-      <div id="footer-blue" className="bg-electric-blue py-[100px] flex items-center justify-center relative overflow-hidden">
+      <div id="footer-blue" className="bg-electric-blue py-12 md:py-16 flex items-center justify-center relative overflow-hidden">
         <div
           ref={riseRef}
           className="transform-gpu will-change-transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
