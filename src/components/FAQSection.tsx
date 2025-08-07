@@ -42,13 +42,12 @@ const FAQSection = () => {
             {Array.from({ length: 50 }, (_, i) => faqItems[i % faqItems.length]).map((question, index) => (
               <div
                 key={`top-${index}`}
-                className="group bg-[#222222] rounded-xl p-6 h-[140px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-blue-400/50 transition-all duration-300 cursor-pointer relative overflow-hidden
-                hover:bg-gradient-to-br hover:from-blue-900/30 hover:via-blue-800/20 hover:to-purple-900/30
-                hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]
-                hover:scale-105"
+                className="group bg-[#222222] rounded-xl p-6 h-[140px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-blue-400/70 transition-all duration-300 cursor-pointer relative overflow-hidden
+                hover:bg-gradient-to-br hover:from-blue-600/40 hover:via-blue-500/30 hover:to-blue-700/20
+                hover:shadow-[0_0_25px_rgba(59,130,246,0.5)]"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-blue-400/5 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <p className="text-light-gray group-hover:text-blue-100 text-xl leading-relaxed text-center relative z-10 transition-colors duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/15 via-blue-300/10 to-blue-600/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <p className="text-light-gray group-hover:text-blue-200 text-xl leading-relaxed text-center relative z-10 transition-colors duration-300">
                   {question}
                 </p>
               </div>
@@ -64,13 +63,12 @@ const FAQSection = () => {
             {Array.from({ length: 50 }, (_, i) => faqItems[(i + 8) % faqItems.length]).map((question, index) => (
               <div
                 key={`bottom-${index}`}
-                className="group bg-[#222222] rounded-xl p-6 h-[140px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-blue-400/50 transition-all duration-300 cursor-pointer relative overflow-hidden
-                hover:bg-gradient-to-br hover:from-blue-900/30 hover:via-blue-800/20 hover:to-purple-900/30
-                hover:shadow-[0_0_30px_rgba(59,130,246,0.4)]
-                hover:scale-105"
+                className="group bg-[#222222] rounded-xl p-6 h-[140px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-blue-400/70 transition-all duration-300 cursor-pointer relative overflow-hidden
+                hover:bg-gradient-to-br hover:from-blue-600/40 hover:via-blue-500/30 hover:to-blue-700/20
+                hover:shadow-[0_0_25px_rgba(59,130,246,0.5)]"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-blue-400/5 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <p className="text-light-gray group-hover:text-blue-100 text-xl leading-relaxed text-center relative z-10 transition-colors duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/15 via-blue-300/10 to-blue-600/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <p className="text-light-gray group-hover:text-blue-200 text-xl leading-relaxed text-center relative z-10 transition-colors duration-300">
                   {question}
                 </p>
               </div>
