@@ -92,12 +92,12 @@ const ManageSubscriptionsCarousel = () => {
         <div className="w-full h-px bg-white/20 mb-12"></div>
 
         {/* Full Width Three Card Display */}
-        <div className="flex items-start w-full mb-20 px-4">
-          {/* Left Card - Extends to edge */}
+        <div className="flex items-start justify-center w-full mb-20">
+          {/* Left Card - Smaller height, top-aligned */}
           {activeSlide > 0 && (
-            <div className="flex-1 opacity-60">
+            <div className="flex-1 max-w-md opacity-60">
               <div 
-                className="w-full h-[500px]"
+                className="w-full h-[350px]"
                 style={{
                   background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
                 }}
@@ -105,7 +105,7 @@ const ManageSubscriptionsCarousel = () => {
             </div>
           )}
 
-          {/* Center Card - Fixed width, proper proportions */}
+          {/* Center Card - Fixed width, full height, always centered */}
           <div className="w-[800px] flex-shrink-0 mx-8">
             <div 
               className="w-full h-[500px] mb-8"
@@ -129,11 +129,11 @@ const ManageSubscriptionsCarousel = () => {
             </div>
           </div>
 
-          {/* Right Card - Extends to edge */}
+          {/* Right Card - Smaller height, top-aligned */}
           {activeSlide < features.length - 1 && (
-            <div className="flex-1 opacity-60">
+            <div className="flex-1 max-w-md opacity-60">
               <div 
-                className="w-full h-[500px]"
+                className="w-full h-[350px]"
                 style={{
                   background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
                 }}
