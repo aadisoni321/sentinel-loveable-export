@@ -46,7 +46,7 @@ const PricingSection = () => {
               aria-pressed={isMonthly}
                 className={`flex-1 px-4 py-2 text-sm rounded-md transition-colors ${
                   isMonthly
-                    ? "bg-secondary/80 text-foreground"
+                    ? "bg-secondary/70 text-foreground"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
             >
@@ -58,7 +58,7 @@ const PricingSection = () => {
               aria-pressed={!isMonthly}
                 className={`flex-1 px-4 py-2 text-sm rounded-md transition-colors ${
                   !isMonthly
-                    ? "bg-secondary/80 text-foreground"
+                    ? "bg-secondary/70 text-foreground"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
             >
