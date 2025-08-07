@@ -6,7 +6,7 @@ const HorizontalScrollingFeatures = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = (e: Event) => {
       if (!containerRef.current || !cardsRef.current) return;
 
       const containerRect = containerRef.current.getBoundingClientRect();
@@ -14,23 +14,35 @@ const HorizontalScrollingFeatures = () => {
       const containerHeight = containerRect.height;
       const windowHeight = window.innerHeight;
 
-      // Calculate scroll progress when section is in view with extended animation
-      if (containerTop <= windowHeight * 0.1 && containerTop + containerHeight >= 0) {
-        // Extended animation with more dead space after 4th card
-        const delayedProgress = Math.max(0, Math.min(1, (windowHeight * 0.1 - containerTop) / (windowHeight + containerHeight * 0.8)));
-        setScrollProgress(delayedProgress);
+      // Calculate scroll progress when section is in view
+      if (containerTop <= 0 && containerTop + containerHeight >= windowHeight) {
+        const progress = Math.max(0, Math.min(1, -containerTop / (containerHeight - windowHeight)));
+        setScrollProgress(progress);
         
-        // Apply horizontal transform with extended range for more dead space
-        const maxTranslate = cardsRef.current.scrollWidth - window.innerWidth + 1200; // Increased for more dead space
-        const translateX = -delayedProgress * maxTranslate;
-        cardsRef.current.style.transform = `translateX(${Math.max(-maxTranslate, translateX)}px)`;
+        // Lock scrolling until animation is complete
+        if (progress < 1) {
+          e.preventDefault();
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = 'unset';
+        }
+        
+        // Apply horizontal transform to the entire container
+        const maxTranslate = cardsRef.current.scrollWidth + 500; // Include title width
+        const translateX = -progress * maxTranslate;
+        cardsRef.current.style.transform = `translateX(${translateX}px)`;
+      } else {
+        document.body.style.overflow = 'unset';
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial calculation
+    window.addEventListener("scroll", handleScroll, { passive: false });
+    handleScroll(new Event('scroll')); // Initial calculation
     
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.body.style.overflow = 'unset';
+    };
   }, []);
 
   const features = [
@@ -56,25 +68,23 @@ const HorizontalScrollingFeatures = () => {
     }
   ];
 
-    return (
+  return (
     <section id="features" ref={containerRef} className="h-[400vh] bg-black relative">
       <div className="sticky top-0 h-screen flex overflow-hidden">
-        {/* Left Side - Fixed Title */}
-        <div 
-          className="w-[500px] flex-shrink-0 flex items-center pl-20 transition-opacity duration-300"
-          style={{ opacity: scrollProgress > 0.2 ? Math.max(0, 1 - (scrollProgress - 0.2) * 3) : 1 }}
-        >
-          <h2 className="text-4xl font-bold text-white leading-tight max-w-sm">
-            What You'll Unlock<br />with Sentinel
-          </h2>
-        </div>
-
-        {/* Right Side - Scrolling Cards */}
+        {/* Scrolling Container - Title and Cards Together */}
         <div 
           ref={cardsRef}
-          className="flex items-center space-x-10 transition-transform duration-75 ease-out ml-20"
-          style={{ width: 'calc(4 * 400px + 3 * 40px)' }}
+          className="flex items-center space-x-20 transition-transform duration-75 ease-out pl-20"
+          style={{ width: 'calc(500px + 4 * 400px + 4 * 80px)' }}
         >
+          {/* Title Section - Now part of scrolling animation */}
+          <div className="w-[500px] flex-shrink-0 flex items-center">
+            <h2 className="text-4xl font-bold text-white leading-tight max-w-sm">
+              What You'll Unlock<br />with Sentinel
+            </h2>
+          </div>
+
+          {/* Cards */}
           {features.map((feature, index) => (
             <div key={feature.id} className="w-[400px] flex flex-col">
               {/* Header - Outside and above the card */}
