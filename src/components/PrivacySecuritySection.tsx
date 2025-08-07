@@ -58,7 +58,7 @@ const PrivacySecuritySection = () => {
               <Lock className="w-8 h-8 icon-lock-closed" />
               <Unlock className="w-8 h-8 icon-lock-open" />
             </span>
-            <div className="section-number">01</div>
+            
             <h3 className="text-2xl font-semibold text-pure-white mb-4">
               Privacy-First by Design
             </h3>
@@ -71,7 +71,7 @@ const PrivacySecuritySection = () => {
           {/* Column 2 - Secure Local Processing */}
           <div className="text-left privacy-item scroll-fade-up">
             <MapPin className="w-8 h-8 text-electric-blue mb-6 icon-anim icon-pin" aria-hidden="true" />
-            <div className="section-number">02</div>
+            
             <h3 className="text-2xl font-semibold text-pure-white mb-4">
               Secure Local Processing
             </h3>
@@ -85,7 +85,7 @@ const PrivacySecuritySection = () => {
           {/* Column 3 - Localized & Compliant Infrastructure */}
           <div className="text-left privacy-item scroll-fade-up">
             <Globe className="w-8 h-8 text-electric-blue mb-6 icon-anim icon-globe" aria-hidden="true" />
-            <div className="section-number">03</div>
+            
             <h3 className="text-2xl font-semibold text-pure-white mb-4">
               Localized & Compliant Infrastructure
             </h3>
