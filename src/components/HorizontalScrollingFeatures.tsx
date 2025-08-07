@@ -42,7 +42,7 @@ const HorizontalScrollingFeatures = () => {
   const features = [
     {
       id: "00",
-      title: "From Trial to Control: AI Integrated Subscription Manager",
+      title: "From Trial to Control: AI Subscription Manager",
       description: "Sentinel tracks trials, renewals, and fees from the moment you sign up. Our AI handles the full lifecycle—signup to cancel—without needing bank access. Stay informed and in control."
     },
     {
