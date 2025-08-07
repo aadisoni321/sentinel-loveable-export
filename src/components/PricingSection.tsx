@@ -69,17 +69,16 @@ const PricingSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {/* Free */}
-          <article className="relative border border-border bg-card text-card-foreground p-8 md:p-10 shadow-sm">
+          <article className="relative border border-border bg-card text-card-foreground p-8 md:p-10 shadow-sm h-full flex flex-col">
             <Badge variant="secondary" className="mb-4 bg-muted text-muted-foreground">Free</Badge>
             
             <div className="space-y-2">
-              <div className="text-5xl md:text-6xl font-extrabold">$0</div>
+              <div className="flex items-center gap-3">
+                <div className="text-5xl md:text-6xl font-extrabold">$0</div>
+                <Badge className="bg-primary/15 text-primary border border-primary/40 opacity-0">Placeholder</Badge>
+              </div>
               <p className="text-muted-foreground">per month, no credit card required</p>
               <div className="h-px w-full bg-border my-8" />
-            </div>
-
-            <div className="mt-6">
-              <Button variant="secondary" className="w-full h-11 bg-muted text-foreground hover:bg-muted/80">Download TRAE</Button>
             </div>
 
             <div className="space-y-3 mt-8">
@@ -90,10 +89,14 @@ const PricingSection = () => {
                 </div>
               ))}
             </div>
+
+            <div className="relative mt-auto">
+              <Button variant="secondary" className="w-full h-11 bg-muted text-foreground hover:bg-muted/80">Download TRAE</Button>
+            </div>
           </article>
 
           {/* Pro - highlighted */}
-          <article className="relative border-2 border-primary bg-card text-card-foreground p-8 md:p-10 shadow-sm overflow-hidden" style={{ backgroundImage: "radial-gradient(hsla(var(--primary),0.12) 1px, transparent 1px)", backgroundSize: "12px 12px", backgroundPosition: "0 0" }}>
+          <article className="relative border-2 border-primary bg-card text-card-foreground p-8 md:p-10 shadow-sm overflow-hidden h-full flex flex-col" style={{ backgroundImage: "radial-gradient(hsla(var(--primary),0.12) 1px, transparent 1px)", backgroundSize: "12px 12px", backgroundPosition: "0 0" }}>
             <div className="relative">
               <Badge className="mb-4 bg-primary/15 text-primary border border-primary/40">Pro</Badge>
               <div className="flex items-center gap-3">
@@ -117,7 +120,7 @@ const PricingSection = () => {
               ))}
             </div>
 
-            <div className="relative flex flex-col gap-4">
+            <div className="relative flex flex-col gap-4 mt-auto">
               <Button className="px-5 h-11">Get started</Button>
               {/* Payment badges (textual for now to avoid extra assets) */}
               <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
