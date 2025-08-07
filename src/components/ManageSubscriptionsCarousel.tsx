@@ -103,7 +103,7 @@ const ManageSubscriptionsCarousel = () => {
             />
             
             {/* Content Below - Two Column Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-white">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
               {/* Left Column - Title (Always 2 lines) */}
               <div>
                 <h3 className="text-3xl font-bold mb-4 leading-tight h-[80px] flex items-center">
@@ -112,7 +112,7 @@ const ManageSubscriptionsCarousel = () => {
               </div>
               
               {/* Right Column - Description (Smaller text) */}
-              <div>
+              <div className="md:col-span-2">
                 <p className="text-sm leading-relaxed text-white/90">
                   {features[activeSlide].content}
                 </p>
