@@ -3,7 +3,7 @@ import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import VideoHeroSection from "@/components/VideoHeroSection";
 import HorizontalScrollingFeatures from "@/components/HorizontalScrollingFeatures";
-import UnifyFinancesSection from "@/components/UnifyFinancesSection";
+
 import ManageSubscriptionsCarousel from "@/components/ManageSubscriptionsCarousel";
 import FAQSection from "@/components/FAQSection";
 import PrivacySecuritySection from "@/components/PrivacySecuritySection";
@@ -21,7 +21,7 @@ const Index = () => {
       <HeroSection onGetStartedClick={() => setIsSignInModalOpen(true)} />
       <VideoHeroSection />
       <HorizontalScrollingFeatures />
-      <UnifyFinancesSection />
+      
       <ManageSubscriptionsCarousel />
       <FAQSection />
       <PrivacySecuritySection />
