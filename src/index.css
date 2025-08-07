@@ -359,6 +359,6 @@ body.scroll-locked {
 @layer utilities {
   .text-gradient-calm {
     @apply text-transparent bg-clip-text;
-    background-image: linear-gradient(90deg, hsl(var(--gradient-calm-from)) 0%, hsl(var(--electric-blue)) 45%, hsl(var(--blue-hover)) 100%);
+    background-image: linear-gradient(90deg, hsl(var(--gradient-calm-from)) 0%, hsl(var(--electric-blue)) 30%, hsl(var(--gradient-calm-to)) 100%);
   }
 }
