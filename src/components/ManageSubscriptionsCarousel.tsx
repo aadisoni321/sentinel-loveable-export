@@ -50,10 +50,10 @@ const ManageSubscriptionsCarousel = () => {
   };
 
   return (
-    <section className="bg-black py-20 px-4 relative">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-black py-20 relative">
+      <div className="w-full">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 px-4">
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
             Manage Your Subscriptions
           </h2>
@@ -63,7 +63,7 @@ const ManageSubscriptionsCarousel = () => {
         </div>
 
         {/* Navigation Arrows */}
-        <div className="flex items-center justify-center gap-4 mb-12">
+        <div className="flex items-center justify-center gap-4 mb-12 px-4">
           <button
             onClick={prevSlide}
             disabled={activeSlide === 0}
@@ -91,13 +91,13 @@ const ManageSubscriptionsCarousel = () => {
         {/* Thin Separator Line */}
         <div className="w-full h-px bg-white/20 mb-12"></div>
 
-        {/* Three Card Display - Center Large, Sides Blue Boxes Only */}
-        <div className="flex items-start justify-center gap-8 mb-20 overflow-hidden">
-          {/* Left Card - Blue Box Only */}
+        {/* Full Width Three Card Display */}
+        <div className="flex items-start w-full mb-20 px-4">
+          {/* Left Card - Extends to edge */}
           {activeSlide > 0 && (
-            <div className="w-full max-w-sm opacity-60 transform scale-75 origin-top">
+            <div className="flex-1 opacity-60">
               <div 
-                className="w-full h-[375px]"
+                className="w-full h-[500px]"
                 style={{
                   background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
                 }}
@@ -105,8 +105,8 @@ const ManageSubscriptionsCarousel = () => {
             </div>
           )}
 
-          {/* Center Card - Full Size (Unchanged) */}
-          <div className="w-full max-w-4xl">
+          {/* Center Card - Fixed width, proper proportions */}
+          <div className="w-[800px] flex-shrink-0 mx-8">
             <div 
               className="w-full h-[500px] mb-8"
               style={{
@@ -129,11 +129,11 @@ const ManageSubscriptionsCarousel = () => {
             </div>
           </div>
 
-          {/* Right Card - Blue Box Only */}
+          {/* Right Card - Extends to edge */}
           {activeSlide < features.length - 1 && (
-            <div className="w-full max-w-sm opacity-60 transform scale-75 origin-top">
+            <div className="flex-1 opacity-60">
               <div 
-                className="w-full h-[375px]"
+                className="w-full h-[500px]"
                 style={{
                   background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
                 }}
