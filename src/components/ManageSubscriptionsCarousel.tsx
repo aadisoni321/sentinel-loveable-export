@@ -57,10 +57,14 @@ const ManageSubscriptionsCarousel = () => {
 
         {/* Smooth, flicker-free carousel */}
         <div className="px-4">
-          <Carousel opts={{ align: "start", loop: false }} className="max-w-6xl mx-auto">
-            <CarouselContent className="min-h-[620px]">
+          <Carousel opts={{ align: "center", loop: false }} className="max-w-6xl mx-auto">
+            <div className="flex items-center justify-end gap-4 mb-6 px-2">
+              <CarouselPrevious className="relative static translate-y-0" />
+              <CarouselNext className="relative static translate-y-0" />
+            </div>
+            <CarouselContent className="min-h-[620px] -ml-4">
               {features.map((feature) => (
-                <CarouselItem key={feature.id} className="basis-full">
+                <CarouselItem key={feature.id} className="pl-4 basis-[85%] md:basis-[60%] lg:basis-1/2">
                   <article className="animate-fade-in">
                     <div
                       className="w-full h-[500px] mb-8 rounded-lg"
@@ -86,11 +90,6 @@ const ManageSubscriptionsCarousel = () => {
               ))}
             </CarouselContent>
 
-            {/* External controls centered below for a clean, stable layout */}
-            <div className="flex items-center justify-center gap-4 mt-12">
-              <CarouselPrevious className="relative static translate-y-0" />
-              <CarouselNext className="relative static translate-y-0" />
-            </div>
           </Carousel>
         </div>
       </div>
