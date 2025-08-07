@@ -11,7 +11,7 @@ const VideoHeroSection = () => {
         <AnimatedIntroLabel className="mb-6" text="INTRODUCING SENTINEL" />
 
         {/* Main Headline */}
-        <h2 className="text-3xl md:text-4xl font-bold text-gradient-calm leading-tight mb-20 max-w-4xl mx-auto whitespace-nowrap font-playfair">
+        <h2 className="text-3xl md:text-4xl font-bold text-gradient-calm leading-tight mb-20 max-w-4xl mx-auto whitespace-nowrap">
           The Smartest Way to Manage Subscriptions
         </h2>
 

@@ -41,7 +41,7 @@ const PrivacySecuritySection = () => {
       <div className="max-w-[1200px] mx-auto">
         {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="text-[56px] font-bold text-gradient-calm mb-8 leading-tight font-playfair">
+          <h2 className="text-[56px] font-bold text-gradient-calm mb-8 leading-tight">
             Privacy and Security
           </h2>
           <p className="text-lg text-light-gray max-w-[800px] mx-auto leading-relaxed">

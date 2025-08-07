@@ -102,7 +102,7 @@ const PricingSection = () => {
     <section id="pricing" ref={sectionRef} className="bg-background py-24 px-4 md:px-8 lg:px-24">
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-gradient-calm font-playfair">Pricing</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gradient-calm">Pricing</h2>
           <p className="text-base md:text-lg text-muted-foreground mt-3">
             Start free. Upgrade when you’re ready.
           </p>
