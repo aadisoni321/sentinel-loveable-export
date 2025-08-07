@@ -39,14 +39,14 @@ const PricingSection = () => {
 
         {/* Billing toggle */}
         <div className="flex justify-center mb-10">
-          <div className="inline-flex items-center gap-1 rounded-md border border-border bg-card p-1">
+          <div className="inline-flex w-full max-w-lg items-center gap-1 rounded-md border border-border bg-card p-1">
             <button
               type="button"
               onClick={() => setBilling("monthly")}
               aria-pressed={isMonthly}
-              className={`px-4 py-2 text-sm rounded-md transition-colors ${
+              className={`flex-1 px-4 py-2 text-sm rounded-md transition-colors ${
                 isMonthly
-                  ? "bg-accent text-accent-foreground"
+                  ? "bg-muted text-foreground"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
@@ -56,9 +56,9 @@ const PricingSection = () => {
               type="button"
               onClick={() => setBilling("yearly")}
               aria-pressed={!isMonthly}
-              className={`px-4 py-2 text-sm rounded-md transition-colors ${
+              className={`flex-1 px-4 py-2 text-sm rounded-md transition-colors ${
                 !isMonthly
-                  ? "bg-accent text-accent-foreground"
+                  ? "bg-muted text-foreground"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
