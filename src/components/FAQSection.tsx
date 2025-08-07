@@ -26,7 +26,7 @@ const FAQSection = () => {
             {[...faqItems.slice(0, 4), ...faqItems.slice(0, 4)].map((question, index) => (
               <div
                 key={`top-${index}`}
-                className="bg-[#222222] rounded-xl p-6 h-[200px] w-[280px] flex-shrink-0 flex items-center justify-start border border-transparent hover:border-white/10 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
+                className="bg-[#222222] rounded-[5px] p-6 h-[200px] flex-1 flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-white/30 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
               >
                 <p className="text-light-gray text-xl leading-relaxed text-center">
                   {question}
@@ -40,7 +40,7 @@ const FAQSection = () => {
             {[...faqItems.slice(4), ...faqItems.slice(4)].map((question, index) => (
               <div
                 key={`bottom-${index}`}
-                className="bg-[#222222] rounded-xl p-6 h-[200px] w-[280px] flex-shrink-0 flex items-center justify-start border border-transparent hover:border-white/10 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
+                className="bg-[#222222] rounded-[5px] p-6 h-[200px] flex-1 flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-white/30 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
               >
                 <p className="text-light-gray text-xl leading-relaxed text-center">
                   {question}
