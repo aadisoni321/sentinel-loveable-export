@@ -1,6 +1,7 @@
 import { Instagram, MessageCircle, Linkedin, Mail, ArrowUp } from "lucide-react";
 import { useEffect, useRef } from "react";
-import "@/styles/sentinel-hover.css";
+import type React from "react";
+import "@/styles/sentinel-holo.css";
 
 const FooterSection = () => {
   const scrollToTop = () => {
@@ -8,6 +9,24 @@ const FooterSection = () => {
   };
 
   const riseRef = useRef<HTMLDivElement | null>(null);
+  const holoRef = useRef<HTMLSpanElement | null>(null);
+
+  const handleHoloMove = (e: React.MouseEvent<HTMLSpanElement>) => {
+    const el = holoRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const mx = (e.clientX - rect.left) / rect.width;
+    const my = (e.clientY - rect.top) / rect.height;
+    el.style.setProperty("--mx", mx.toString());
+    el.style.setProperty("--my", my.toString());
+  };
+
+  const resetHolo = () => {
+    const el = holoRef.current;
+    if (!el) return;
+    el.style.setProperty("--mx", "0.5");
+    el.style.setProperty("--my", "0.5");
+  };
 
   useEffect(() => {
     const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
@@ -168,7 +187,15 @@ const FooterSection = () => {
           <h2 
             className="text-[clamp(5rem,12vw,14rem)] font-extrabold text-pure-white tracking-[4px] select-none footer-sentinel-text"
           >
-            <span className="sentinel-neo" data-text="SENTINEL">SENTINEL<span className="shine" /></span>
+            <span
+              ref={holoRef}
+              className="sentinel-holo"
+              data-text="SENTINEL"
+              onMouseMove={handleHoloMove}
+              onMouseLeave={resetHolo}
+            >
+              SENTINEL
+            </span>
           </h2>
         </div>
       </div>
