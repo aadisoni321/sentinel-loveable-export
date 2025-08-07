@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const ManageSubscriptionsCarousel = () => {
-  const [activeSlide, setActiveSlide] = useState(0); // Start at slide 0
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const features = [
     {
