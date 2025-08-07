@@ -252,44 +252,66 @@ body.scroll-locked {
   }
 }
 
-/* CAROUSEL SLIDE ANIMATIONS - ABRUPT AND VISIBLE */
-@keyframes slide-in-from-right {
+/* CAROUSEL SLIDE ANIMATIONS - TRANSFORMING POSITIONS */
+@keyframes card-slide-to-center {
   from {
-    transform: translateX(150%) translateY(30px);
+    transform: translateX(100px) scale(0.6);
+    opacity: 0.8;
   }
   to {
-    transform: translateX(0) translateY(0);
+    transform: translateX(0) scale(1);
+    opacity: 1;
   }
 }
 
-@keyframes slide-in-from-left {
+@keyframes card-slide-to-left {
   from {
-    transform: translateX(-150%) translateY(30px);
+    transform: translateX(0) scale(1);
+    opacity: 1;
   }
   to {
-    transform: translateX(0) translateY(0);
+    transform: translateX(-100px) scale(0.6);
+    opacity: 1;
   }
 }
 
-@keyframes slide-up-center {
+@keyframes card-slide-to-right {
   from {
-    transform: translateY(50px) scale(0.95);
+    transform: translateX(-100px) scale(0.6);
+    opacity: 1;
   }
   to {
-    transform: translateY(0) scale(1);
+    transform: translateX(0) scale(1);
+    opacity: 1;
   }
 }
 
-.animate-slide-in-from-right {
-  animation: slide-in-from-right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+@keyframes text-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.animate-slide-in-from-left {
-  animation: slide-in-from-left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+.animate-card-slide-to-center {
+  animation: card-slide-to-center 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.animate-slide-up-center {
-  animation: slide-up-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+.animate-card-slide-to-left {
+  animation: card-slide-to-left 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-card-slide-to-right {
+  animation: card-slide-to-right 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-text-appear {
+  animation: text-appear 0.3s ease-out 0.3s forwards;
+  opacity: 0;
 }
 
 .animation-delay-100 {
