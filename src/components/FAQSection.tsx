@@ -7,7 +7,15 @@ const FAQSection = () => {
     "How much does Sentinel cost?",
     "Can I use Sentinel without browser extension?",
     "How do I get notified about renewals?",
-    "What happens to my data if I cancel?"
+    "What happens to my data if I cancel?",
+    "Does Sentinel work with all browsers?",
+    "Can I cancel multiple subscriptions at once?",
+    "How accurate is the subscription detection?",
+    "Is there a mobile app available?",
+    "What payment methods do you accept?",
+    "Can I get refunds for cancelled subscriptions?",
+    "How does Sentinel protect my privacy?",
+    "Do you offer customer support?"
   ];
 
   return (
@@ -23,10 +31,10 @@ const FAQSection = () => {
         <div className="space-y-6 overflow-hidden">
           {/* Top Row - Sliding Left */}
           <div className="flex gap-6 animate-scroll-left">
-            {[...faqItems.slice(0, 4), ...faqItems.slice(0, 4)].map((question, index) => (
+            {[...faqItems.slice(0, 8), ...faqItems.slice(0, 8), ...faqItems.slice(0, 8)].map((question, index) => (
               <div
                 key={`top-${index}`}
-                className="bg-[#222222] rounded-[5px] p-6 h-[200px] flex-1 flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-white/30 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
+                className="bg-[#222222] rounded-xl p-6 h-[200px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-white/30 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
               >
                 <p className="text-light-gray text-xl leading-relaxed text-center">
                   {question}
@@ -37,10 +45,10 @@ const FAQSection = () => {
           
           {/* Bottom Row - Sliding Right */}
           <div className="flex gap-6 animate-scroll-right">
-            {[...faqItems.slice(4), ...faqItems.slice(4)].map((question, index) => (
+            {[...faqItems.slice(8), ...faqItems.slice(8), ...faqItems.slice(8)].map((question, index) => (
               <div
                 key={`bottom-${index}`}
-                className="bg-[#222222] rounded-[5px] p-6 h-[200px] flex-1 flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-white/30 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
+                className="bg-[#222222] rounded-xl p-6 h-[200px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-white/30 hover:bg-[#2A2A2A] transition-all duration-300 cursor-pointer"
               >
                 <p className="text-light-gray text-xl leading-relaxed text-center">
                   {question}
