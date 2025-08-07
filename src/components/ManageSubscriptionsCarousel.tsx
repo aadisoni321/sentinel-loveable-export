@@ -9,31 +9,31 @@ const ManageSubscriptionsCarousel = () => {
       id: 0,
       number: "1",
       title: "Track Subscriptions",
-      content: "Sentinel monitors trials, subscriptions, and renewal patterns from the moment you sign up. It intelligently tracks confirmation emails, billing patterns, and known services—keeping your dashboard up to date without needing access to your financial data. Our advanced detection algorithms work seamlessly in the background, ensuring comprehensive coverage of all your subscription activities while maintaining complete privacy and security of your personal information."
+      content: "Sentinel monitors trials, subscriptions, and renewal patterns from the moment you sign up. It intelligently tracks confirmation emails, billing patterns, and known services—keeping your dashboard up to date without needing access to your financial data. Advanced detection algorithms work seamlessly in the background while maintaining complete privacy."
     },
     {
       id: 1,
       number: "2",
       title: "One-Click\nCancellation",
-      content: "Easily cancel unwanted subscriptions in seconds—no login hoops, customer service calls, or hidden steps. Sentinel handles service-specific flows behind the scenes, giving you a simple 'cancel' button that just works. Our system automatically detects cancellation pathways and handles the complex navigation through various subscription platforms, making what used to be a frustrating process completely seamless. We've mapped out the cancellation flows for thousands of services to ensure maximum success rates."
+      content: "Easily cancel unwanted subscriptions in seconds—no login hoops, customer service calls, or hidden steps. Sentinel handles service-specific flows behind the scenes, giving you a simple 'cancel' button that just works. We've mapped out cancellation flows for thousands of services to ensure maximum success rates."
     },
     {
       id: 2,
       number: "3",
       title: "Lightweight Browser\nExtension",
-      content: "The Sentinel Assistant detects trials and signups in real time while you browse sites like Netflix, Audible, or Spotify. It works locally in your browser—never tracking history or storing sensitive data. Our intelligent detection engine recognizes subscription patterns across thousands of websites, automatically capturing trial starts, pricing changes, and subscription modifications without compromising your privacy or slowing down your browsing experience."
+      content: "The Sentinel Assistant detects trials and signups in real time while you browse sites like Netflix, Audible, or Spotify. It works locally in your browser—never tracking history or storing sensitive data. Our intelligent detection engine recognizes subscription patterns across thousands of websites without compromising your privacy."
     },
     {
       id: 3,
       number: "4",
       title: "Analytics & Usage\nInsights",
-      content: "See which subscriptions you use and which you don't. Sentinel passively collects usage signals like login frequency or inactivity periods, helping you identify services you forget about or no longer need. Our intelligent analytics provide detailed insights into your subscription usage patterns, helping you make informed decisions about which services provide real value to your daily routine. Track spending trends, usage frequency, and cost-per-use metrics to optimize your subscription portfolio."
+      content: "See which subscriptions you use and which you don't. Sentinel passively collects usage signals like login frequency or inactivity periods, helping you identify services you forget about or no longer need. Track spending trends, usage frequency, and cost-per-use metrics to optimize your subscription portfolio."
     },
     {
       id: 4,
       number: "5",
       title: "Renewal &\nTrial Alerts",
-      content: "Get notified before you're charged—not after. Sentinel sends alerts for upcoming renewals, trial expirations, and billing changes via email, SMS, or calendar sync. Never be surprised by unexpected charges again with our comprehensive notification system that keeps you informed about every important subscription event well in advance. Customize notification timing and delivery methods to match your preferences and ensure you never miss an important deadline."
+      content: "Get notified before you're charged—not after. Sentinel sends alerts for upcoming renewals, trial expirations, and billing changes via email, SMS, or calendar sync. Customize notification timing and delivery methods to match your preferences and never miss important deadlines."
     }
   ];
 
