@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AnimatedIntroLabel from "@/components/AnimatedIntroLabel";
 
 const VideoHeroSection = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -6,16 +7,8 @@ const VideoHeroSection = () => {
   return (
     <section id="product" className="py-32 bg-black">
       <div className="max-w-6xl mx-auto px-6 md:px-12 text-center">
-        {/* Small Blue Label */}
-        <div className="relative mb-6">
-          <div className="inline-flex items-center space-x-4">
-            <div className="w-10 h-0.5 bg-blue-500"></div>
-            <h3 className="text-sm font-bold text-blue-500 tracking-wider">
-              INTRODUCING SENTINEL
-            </h3>
-            <div className="w-10 h-0.5 bg-blue-500"></div>
-          </div>
-        </div>
+        {/* Animated Intro Label */}
+        <AnimatedIntroLabel className="mb-6" text="INTRODUCING SENTINEL" />
 
         {/* Main Headline */}
         <h2 className="text-3xl md:text-4xl font-bold text-gradient-calm leading-tight mb-20 max-w-4xl mx-auto whitespace-nowrap font-playfair">
