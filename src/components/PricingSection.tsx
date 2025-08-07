@@ -44,11 +44,11 @@ const PricingSection = () => {
               type="button"
               onClick={() => setBilling("monthly")}
               aria-pressed={isMonthly}
-                className={`flex-1 px-4 py-2 text-sm rounded-md transition-colors ${
-                  isMonthly
-                    ? "bg-secondary/70 text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+              className={`flex-1 px-4 py-2 text-sm rounded-md transition-colors ${
+                isMonthly
+                  ? "bg-toggle text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
               Monthly
             </button>
@@ -56,11 +56,11 @@ const PricingSection = () => {
               type="button"
               onClick={() => setBilling("yearly")}
               aria-pressed={!isMonthly}
-                className={`flex-1 px-4 py-2 text-sm rounded-md transition-colors ${
-                  !isMonthly
-                    ? "bg-secondary/70 text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+              className={`flex-1 px-4 py-2 text-sm rounded-md transition-colors ${
+                !isMonthly
+                  ? "bg-toggle text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
               Yearly <span className="ml-2 font-medium text-primary">Save 25%</span>
             </button>

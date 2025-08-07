@@ -39,6 +39,7 @@
     --ring: var(--electric-blue);
     --card: var(--dark-gray-card);
     --card-foreground: var(--pure-white);
+    --toggle-active: 220 2% 27%; /* RGB 68,69,71 */
     --radius: 0.5rem;
   }
 }
