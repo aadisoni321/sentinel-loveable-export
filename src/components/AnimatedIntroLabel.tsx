@@ -36,13 +36,13 @@ const AnimatedIntroLabel = ({ text, className }: AnimatedIntroLabelProps) => {
 
   // Staged animation values
   const split = clamp((progress - 0.2) / 0.8); // 0 -> 1 after 20% progress
+  const splitOpacity = clamp((progress - 0.18) / 0.15); // fade in split lines shortly after start
   const textOpacity = clamp((progress - 0.35) / 0.25); // text fades in
   const centerLineOpacity = 1 - clamp((progress - 0.1) / 0.2); // single line fades out
 
   // Line widths in pixels for a balanced label
-  const baseLine = 28; // initial short line
   const maxLine = 64;  // final line length on each side
-  const leftWidth = baseLine + (maxLine - baseLine) * split;
+  const leftWidth = maxLine * split;
   const rightWidth = leftWidth;
 
   return (
@@ -57,7 +57,7 @@ const AnimatedIntroLabel = ({ text, className }: AnimatedIntroLabelProps) => {
       </div>
 
       {/* Split expanding lines + text */}
-      <div className="relative z-10 inline-flex items-center space-x-4 select-none">
+      <div className="relative z-10 inline-flex items-center space-x-4 select-none" style={{ opacity: splitOpacity, visibility: splitOpacity > 0 ? 'visible' : 'hidden' }}>
         <div
           aria-hidden
           className="h-0.5 bg-electric-blue rounded-full"
