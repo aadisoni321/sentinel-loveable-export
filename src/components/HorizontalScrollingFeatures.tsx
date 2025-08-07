@@ -14,14 +14,14 @@ const HorizontalScrollingFeatures = () => {
       const containerHeight = containerRect.height;
       const windowHeight = window.innerHeight;
 
-      // Calculate scroll progress when section is in view with much more delay
+      // Calculate scroll progress when section is in view with extended animation
       if (containerTop <= windowHeight * 0.1 && containerTop + containerHeight >= 0) {
-        // Much more delayed animation start to center the frame first
-        const delayedProgress = Math.max(0, Math.min(1, (windowHeight * 0.1 - containerTop) / (windowHeight + containerHeight * 0.6)));
+        // Extended animation with more dead space after 4th card
+        const delayedProgress = Math.max(0, Math.min(1, (windowHeight * 0.1 - containerTop) / (windowHeight + containerHeight * 0.8)));
         setScrollProgress(delayedProgress);
         
-        // Apply horizontal transform based on scroll progress with smoother calculation
-        const maxTranslate = cardsRef.current.scrollWidth - window.innerWidth + 800; // 800px for left panel + extra space
+        // Apply horizontal transform with extended range for more dead space
+        const maxTranslate = cardsRef.current.scrollWidth - window.innerWidth + 1200; // Increased for more dead space
         const translateX = -delayedProgress * maxTranslate;
         cardsRef.current.style.transform = `translateX(${Math.max(-maxTranslate, translateX)}px)`;
       }
@@ -60,7 +60,10 @@ const HorizontalScrollingFeatures = () => {
     <section id="features" ref={containerRef} className="h-[400vh] bg-black relative">
       <div className="sticky top-0 h-screen flex overflow-hidden">
         {/* Left Side - Fixed Title */}
-        <div className="w-[500px] flex-shrink-0 flex items-center pl-20">
+        <div 
+          className="w-[500px] flex-shrink-0 flex items-center pl-20 transition-opacity duration-300"
+          style={{ opacity: scrollProgress > 0.2 ? Math.max(0, 1 - (scrollProgress - 0.2) * 3) : 1 }}
+        >
           <h2 className="text-4xl font-bold text-white leading-tight max-w-sm">
             What You'll Unlock<br />with Sentinel
           </h2>
