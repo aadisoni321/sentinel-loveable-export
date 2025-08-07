@@ -7,27 +7,33 @@ const ManageSubscriptionsCarousel = () => {
   const features = [
     {
       id: 0,
-      number: "2",
-      title: "One-Click Cancellation",
-      content: "Easily cancel unwanted subscriptions in seconds—no login hoops, customer service calls, or hidden steps. Sentinel handles service-specific flows behind the scenes, giving you a simple 'cancel' button that just works. It's fast, private, and designed to help you break free from sneaky renewals."
+      number: "1",
+      title: "Track Subscriptions Automatically",
+      content: "Sentinel monitors trials, subscriptions, and renewal patterns from the moment you sign up. It intelligently tracks confirmation emails, billing patterns, and known services—keeping your dashboard up to date without needing access to your financial data."
     },
     {
       id: 1,
-      number: "3",
-      title: "Lightweight Browser Extension",
-      content: "The Sentinel Assistant detects trials and signups in real time while you browse sites like Netflix, Audible, or Spotify. It works locally in your browser—never tracking history or storing sensitive data—so you get instant trial detection without giving up privacy or speed."
+      number: "2",
+      title: "One-Click Cancellation",
+      content: "Easily cancel unwanted subscriptions in seconds—no login hoops, customer service calls, or hidden steps. Sentinel handles service-specific flows behind the scenes, giving you a simple 'cancel' button that just works."
     },
     {
       id: 2,
-      number: "4",
-      title: "Analytics & Usage Insights",
-      content: "See which subscriptions you use and which you don't. Sentinel passively collects usage signals like login frequency or inactivity periods, helping you identify services you forget about or no longer need—so you can cut costs intelligently, not blindly."
+      number: "3",
+      title: "Lightweight Browser Extension",
+      content: "The Sentinel Assistant detects trials and signups in real time while you browse sites like Netflix, Audible, or Spotify. It works locally in your browser—never tracking history or storing sensitive data."
     },
     {
       id: 3,
+      number: "4",
+      title: "Analytics & Usage Insights",
+      content: "See which subscriptions you use and which you don't. Sentinel passively collects usage signals like login frequency or inactivity periods, helping you identify services you forget about or no longer need."
+    },
+    {
+      id: 4,
       number: "5",
       title: "Renewal & Trial Alerts",
-      content: "Get notified before you're charged—not after. Sentinel sends alerts for upcoming renewals, trial expirations, and billing changes via email, SMS, or calendar sync. You'll never be caught off guard by another unexpected charge or hidden renewal again."
+      content: "Get notified before you're charged—not after. Sentinel sends alerts for upcoming renewals, trial expirations, and billing changes via email, SMS, or calendar sync."
     }
   ];
 
@@ -88,9 +94,9 @@ const ManageSubscriptionsCarousel = () => {
         {/* Single Card Display */}
         <div className="flex justify-center mb-20">
           <div className="w-full max-w-4xl">
-            {/* Blue Box - Empty */}
+            {/* Blue Box - Empty - Doubled Height */}
             <div 
-              className="w-full h-64 mb-8"
+              className="w-full h-[500px] mb-8"
               style={{
                 background: 'linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(224, 68%, 58%) 100%)'
               }}
@@ -98,16 +104,16 @@ const ManageSubscriptionsCarousel = () => {
             
             {/* Content Below - Two Column Layout */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-white">
-              {/* Left Column - Title */}
+              {/* Left Column - Title (Always 2 lines) */}
               <div>
-                <h3 className="text-2xl font-bold mb-4">
+                <h3 className="text-3xl font-bold mb-4 leading-tight h-[80px] flex items-center">
                   {features[activeSlide].number}. {features[activeSlide].title}
                 </h3>
               </div>
               
-              {/* Right Column - Description */}
+              {/* Right Column - Description (Smaller text) */}
               <div>
-                <p className="text-lg leading-relaxed text-white/90">
+                <p className="text-sm leading-relaxed text-white/90">
                   {features[activeSlide].content}
                 </p>
               </div>
@@ -115,15 +121,6 @@ const ManageSubscriptionsCarousel = () => {
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="text-center">
-          <h3 className="text-4xl font-bold text-white mb-6">
-            Track Subscriptions Automatically
-          </h3>
-          <p className="text-lg text-white/80 max-w-4xl mx-auto leading-relaxed">
-            Sentinel monitors trials, subscriptions, and renewal patterns from the moment you sign up. It intelligently tracks confirmation emails, billing patterns, and known services—keeping your dashboard up to date without needing access to your financial data. Stay on top of everything without the noise or guesswork.
-          </p>
-        </div>
       </div>
     </section>
   );
