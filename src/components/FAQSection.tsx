@@ -23,22 +23,23 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="bg-pure-black py-[120px] px-4 md:px-8 lg:px-[120px]">
-      <div className="max-w-[1200px] mx-auto">
+    <section className="bg-pure-black py-[120px] overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-4 md:px-8 lg:px-[120px]">
         {/* Header */}
         <div className="text-center mb-20">
           <h2 className="text-[72px] font-bold text-pure-white mb-8">FAQ</h2>
           <p className="text-lg text-light-gray text-center">Frequently asked questions</p>
         </div>
+      </div>
 
-        {/* FAQ Animation */}
-        <div className="space-y-6 overflow-hidden">
-          {/* Top Row - Sliding Left */}
-          <div 
-            className={`flex gap-6 ${hoveredRow === 'top' ? '' : 'animate-scroll-left'}`}
-            onMouseEnter={() => setHoveredRow('top')}
-            onMouseLeave={() => setHoveredRow(null)}
-          >
+      {/* FAQ Animation - Full Viewport Width */}
+      <div className="space-y-6 w-full">
+        {/* Top Row - Sliding Left */}
+        <div 
+          className={`flex gap-6 ${hoveredRow === 'top' ? '' : 'animate-scroll-left'}`}
+          onMouseEnter={() => setHoveredRow('top')}
+          onMouseLeave={() => setHoveredRow(null)}
+        >
             {Array.from({ length: 50 }, (_, i) => faqItems[i % faqItems.length]).map((question, index) => (
               <div
                 key={`top-${index}`}
@@ -62,7 +63,7 @@ const FAQSection = () => {
           >
             {Array.from({ length: 50 }, (_, i) => faqItems[(i + 8) % faqItems.length]).map((question, index) => (
               <div
-                key={`bottom-${index}`}
+                key={`bottom-${index + 1000}`}
                 className="group bg-[#222222] rounded-xl p-6 h-[140px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-blue-400/70 transition-all duration-300 cursor-pointer relative overflow-hidden
                 hover:bg-gradient-to-br hover:from-blue-600/40 hover:via-blue-500/30 hover:to-blue-700/20
                 hover:shadow-[0_0_25px_rgba(59,130,246,0.5)]"
@@ -75,7 +76,6 @@ const FAQSection = () => {
             ))}
           </div>
         </div>
-      </div>
     </section>
   );
 };
