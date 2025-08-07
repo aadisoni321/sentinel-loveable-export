@@ -14,10 +14,10 @@ const HorizontalScrollingFeatures = () => {
       const containerHeight = containerRect.height;
       const windowHeight = window.innerHeight;
 
-      // Calculate scroll progress when section is in view with more delay
-      if (containerTop <= windowHeight * 0.3 && containerTop + containerHeight >= 0) {
-        // More delayed animation start to see the title first
-        const delayedProgress = Math.max(0, Math.min(1, (windowHeight * 0.3 - containerTop) / (windowHeight + containerHeight * 0.4)));
+      // Calculate scroll progress when section is in view with much more delay
+      if (containerTop <= windowHeight * 0.1 && containerTop + containerHeight >= 0) {
+        // Much more delayed animation start to center the frame first
+        const delayedProgress = Math.max(0, Math.min(1, (windowHeight * 0.1 - containerTop) / (windowHeight + containerHeight * 0.6)));
         setScrollProgress(delayedProgress);
         
         // Apply horizontal transform based on scroll progress with smoother calculation
