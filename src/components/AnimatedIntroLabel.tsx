@@ -50,10 +50,10 @@ const AnimatedIntroLabel = ({ text, className }: AnimatedIntroLabelProps) => {
       {/* Single center line (initial state) */}
       <div
         aria-hidden
-        className="absolute w-40 flex items-center justify-center"
+        className="absolute w-[168px] flex items-center justify-center"
         style={{ opacity: centerLineOpacity }}
       >
-        <div className="h-0.5 bg-electric-blue w-[56px]" />
+        <div className="h-0.5 bg-electric-blue w-[168px]" />
       </div>
 
       {/* Split expanding lines + text */}
