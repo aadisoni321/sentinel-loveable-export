@@ -6,7 +6,7 @@ const FooterSection = () => {
   };
 
   return (
-    <footer id="footer-reveal" className="fixed inset-x-0 bottom-0 z-[-1] bg-pure-black pointer-events-auto">
+    <footer className="bg-pure-black">
       {/* Main Footer */}
       <div className="border-t border-white/10 py-[60px] px-4 md:px-8 lg:px-20">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -109,10 +109,9 @@ const FooterSection = () => {
       </div>
 
       {/* Final Blue Section */}
-      <div className="bg-gradient-to-b from-electric-blue to-electric-blue/80 py-[120px] flex items-center justify-center relative overflow-hidden">
-        <h2
-          className="text-[clamp(8rem,20vw,24rem)] font-extrabold text-pure-white tracking-[4px] cursor-pointer select-none footer-sentinel-text"
-          style={{ willChange: "transform" }}
+      <div className="bg-electric-blue py-[100px] flex items-center justify-center relative overflow-hidden">
+        <h2 
+          className="text-[300px] font-extrabold text-pure-white tracking-[4px] cursor-pointer select-none footer-sentinel-text"
           onMouseMove={(e) => {
             const rect = e.currentTarget.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -124,7 +123,7 @@ const FooterSection = () => {
             e.currentTarget.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "rotateX(0deg) rotateY(0deg)";
+            e.currentTarget.style.transform = 'rotateX(0deg) rotateY(0deg)';
           }}
         >
           SENTINEL
