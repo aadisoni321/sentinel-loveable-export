@@ -6,7 +6,7 @@ const HorizontalScrollingFeatures = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const handleScroll = (e: Event) => {
+    const handleScroll = () => {
       if (!containerRef.current || !cardsRef.current) return;
 
       const containerRect = containerRef.current.getBoundingClientRect();
@@ -16,32 +16,26 @@ const HorizontalScrollingFeatures = () => {
 
       // Calculate scroll progress when section is in view
       if (containerTop <= 0 && containerTop + containerHeight >= windowHeight) {
-        const progress = Math.max(0, Math.min(1, -containerTop / (containerHeight - windowHeight)));
+        // Calculate progress through the section (0 to 1)
+        const scrolled = -containerTop;
+        const totalScrollDistance = containerHeight - windowHeight;
+        const progress = Math.max(0, Math.min(1, scrolled / totalScrollDistance));
         setScrollProgress(progress);
         
-        // Lock scrolling until animation is complete
-        if (progress < 1) {
-          e.preventDefault();
-          document.body.style.overflow = 'hidden';
-        } else {
-          document.body.style.overflow = 'unset';
-        }
-        
-        // Apply horizontal transform to the entire container
-        const maxTranslate = cardsRef.current.scrollWidth + 500; // Include title width
+        // Apply horizontal transform - scroll the entire container including title
+        const cardsWidth = cardsRef.current.scrollWidth;
+        const viewportWidth = window.innerWidth;
+        const maxTranslate = cardsWidth - viewportWidth + 400; // Extra space at the end
         const translateX = -progress * maxTranslate;
         cardsRef.current.style.transform = `translateX(${translateX}px)`;
-      } else {
-        document.body.style.overflow = 'unset';
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: false });
-    handleScroll(new Event('scroll')); // Initial calculation
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial calculation
     
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      document.body.style.overflow = 'unset';
     };
   }, []);
 
