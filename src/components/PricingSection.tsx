@@ -1,44 +1,79 @@
+import { useState } from "react";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 const features = {
   free: [
     "Track up to 5 subscriptions",
     "Smart renewal alerts",
-    "Basic spending insights"
+    "Basic spending insights",
   ],
   pro: [
     "Unlimited subscriptions",
     "One-tap cancellations",
     "Advanced analytics & trends",
     "Bank-grade security",
-    "Priority support"
+    "Priority support",
   ],
-  ultra: [
-    "Everything in Pro",
-    "Team/workspace support",
-    "Custom export & integrations",
-    "Dedicated success manager"
-  ]
 };
 
 const PricingSection = () => {
+  const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
+  const isMonthly = billing === "monthly";
+
+  const displayPrice = isMonthly ? "$3" : "$90";
+  const secondaryLine = isMonthly
+    ? "$10 from the second month, billed monthly"
+    : "Billed annually (equivalent to $7.50/mo)";
+
   return (
     <section id="pricing" className="bg-background py-24 px-4 md:px-8 lg:px-24">
       <div className="max-w-6xl mx-auto">
-        <header className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">Individual Plans</h2>
+        <header className="text-center mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">Pricing</h2>
           <p className="text-base md:text-lg text-muted-foreground mt-3">
-            Get started for free and upgrade as your needs grow.
+            Start free. Upgrade when you’re ready.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        {/* Billing toggle */}
+        <div className="flex justify-center mb-10">
+          <div className="inline-flex items-center gap-1 rounded-md border border-border bg-card p-1">
+            <button
+              type="button"
+              onClick={() => setBilling("monthly")}
+              aria-pressed={isMonthly}
+              className={`px-4 py-2 text-sm rounded-md transition-colors ${
+                isMonthly
+                  ? "bg-accent text-accent-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Monthly
+            </button>
+            <button
+              type="button"
+              onClick={() => setBilling("yearly")}
+              aria-pressed={!isMonthly}
+              className={`px-4 py-2 text-sm rounded-md transition-colors ${
+                !isMonthly
+                  ? "bg-accent text-accent-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Yearly <span className="ml-2 font-medium text-primary">Save 25%</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {/* Free */}
           <article className="relative border border-border bg-card text-card-foreground p-8 md:p-10 shadow-sm">
+            <Badge variant="secondary" className="mb-6">Free</Badge>
             <div className="space-y-2">
-              <h3 className="text-xl font-semibold">Hobby</h3>
-              <div className="text-5xl md:text-6xl font-extrabold">Free</div>
+              <div className="text-5xl md:text-6xl font-extrabold">$0</div>
+              <p className="text-muted-foreground">per month, no credit card required</p>
               <div className="h-px w-full bg-border my-6" />
             </div>
 
@@ -52,28 +87,32 @@ const PricingSection = () => {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <Button variant="secondary" className="px-5">Get Started</Button>
-              <Button variant="outline" className="px-5">More info</Button>
+              <Button variant="secondary" className="px-5">Start free</Button>
             </div>
           </article>
 
           {/* Pro - highlighted */}
-          <article className="relative border border-primary/40 bg-card text-card-foreground p-8 md:p-10 shadow-sm overflow-hidden">
-            {/* gradient glow accent */}
+          <article className="relative border border-primary/60 bg-card text-card-foreground p-8 md:p-10 shadow-sm overflow-hidden">
+            {/* glow */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 opacity-80"
               style={{
                 background:
-                  "radial-gradient(120% 80% at 80% 120%, hsla(var(--primary),0.35) 0%, transparent 45%), radial-gradient(120% 80% at 10% 110%, hsla(var(--primary),0.12) 0%, transparent 55%)"
+                  "radial-gradient(120% 80% at 80% 120%, hsla(var(--primary),0.35) 0%, transparent 45%), radial-gradient(120% 80% at 10% 110%, hsla(var(--primary),0.12) 0%, transparent 55%)",
               }}
             />
-            <div className="relative space-y-2">
-              <h3 className="text-xl font-semibold">Pro</h3>
-              <div className="flex items-end gap-2">
-                <div className="text-5xl md:text-6xl font-extrabold">$20</div>
-                <span className="text-muted-foreground mb-2">/mo</span>
+            <div className="relative">
+              <Badge className="mb-4">Pro</Badge>
+              <div className="flex items-center gap-3">
+                <div className="text-5xl md:text-6xl font-extrabold">{displayPrice}</div>
+                {isMonthly ? (
+                  <Badge variant="secondary">1st-Month Discount</Badge>
+                ) : (
+                  <Badge variant="secondary">Save 25%</Badge>
+                )}
               </div>
+              <p className="text-muted-foreground mt-2">{secondaryLine}</p>
               <div className="h-px w-full bg-border my-6" />
             </div>
 
@@ -86,34 +125,16 @@ const PricingSection = () => {
               ))}
             </div>
 
-            <div className="relative flex flex-wrap gap-3">
-              <Button className="px-5">Get Pro</Button>
-              <Button variant="outline" className="px-5">More info ↗</Button>
-            </div>
-          </article>
-
-          {/* Ultra */}
-          <article className="relative border border-border bg-card text-card-foreground p-8 md:p-10 shadow-sm">
-            <div className="space-y-2">
-              <h3 className="text-xl font-semibold">Ultra</h3>
-              <div className="flex items-end gap-2">
-                <div className="text-5xl md:text-6xl font-extrabold">$200</div>
-                <span className="text-muted-foreground mb-2">/mo</span>
+            <div className="relative flex flex-col gap-4">
+              <Button className="px-5 h-11">Get started</Button>
+              {/* Payment badges (textual for now to avoid extra assets) */}
+              <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                <Badge variant="outline">Apple Pay</Badge>
+                <Badge variant="outline">PayPal</Badge>
+                <Badge variant="outline">Visa</Badge>
+                <Badge variant="outline">Mastercard</Badge>
+                <Badge variant="outline">Amex</Badge>
               </div>
-              <div className="h-px w-full bg-border my-6" />
-            </div>
-
-            <div className="space-y-3 mb-8">
-              {features.ultra.map((f) => (
-                <div key={f} className="flex items-start gap-3 text-sm md:text-base text-muted-foreground">
-                  <Check className="size-5 text-primary mt-0.5" />
-                  <span>{f}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              <Button variant="secondary" className="px-5">Get Ultra</Button>
             </div>
           </article>
         </div>
