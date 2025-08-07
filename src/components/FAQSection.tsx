@@ -1,8 +1,4 @@
-import { useState } from "react";
-
 const FAQSection = () => {
-  const [hoveredRow, setHoveredRow] = useState<'top' | 'bottom' | null>(null);
-
   const faqItems = [
     "How accurate is Sentinel's subscription detection?",
     "Can I cancel subscriptions directly through Sentinel?",
@@ -36,11 +32,9 @@ const FAQSection = () => {
       <div className="relative space-y-6 w-full">
         {/* Top Row - Sliding Left */}
         <div 
-          className={`flex gap-6 ${hoveredRow === 'top' ? '' : 'animate-scroll-left'}`}
-          onMouseEnter={() => setHoveredRow('top')}
-          onMouseLeave={() => setHoveredRow(null)}
+          className="flex gap-6 animate-scroll-left hover:[animation-play-state:paused] [will-change:transform]"
         >
-            {Array.from({ length: 50 }, (_, i) => faqItems[i % faqItems.length]).map((question, index) => (
+            {Array.from({ length: 24 }, (_, i) => faqItems[i % faqItems.length]).map((question, index) => (
               <div
                 key={`top-${index}`}
                 className="group bg-[#222222] rounded-xl p-6 h-[140px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-blue-400/70 transition-all duration-300 cursor-pointer relative overflow-hidden
@@ -57,11 +51,9 @@ const FAQSection = () => {
           
           {/* Bottom Row - Sliding Right */}
           <div 
-            className={`flex gap-6 ${hoveredRow === 'bottom' ? '' : 'animate-scroll-right'}`}
-            onMouseEnter={() => setHoveredRow('bottom')}
-            onMouseLeave={() => setHoveredRow(null)}
+            className="flex gap-6 animate-scroll-right hover:[animation-play-state:paused] [will-change:transform]"
           >
-            {Array.from({ length: 50 }, (_, i) => faqItems[(i + 8) % faqItems.length]).map((question, index) => (
+            {Array.from({ length: 24 }, (_, i) => faqItems[(i + 8) % faqItems.length]).map((question, index) => (
               <div
                 key={`bottom-${index + 1000}`}
                 className="group bg-[#222222] rounded-xl p-6 h-[140px] w-[280px] flex-shrink-0 flex items-center justify-start border border-white/20 hover:border-blue-400/70 transition-all duration-300 cursor-pointer relative overflow-hidden
