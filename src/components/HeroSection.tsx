@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import TypewriterEffect from "./TypewriterEffect";
+import AnimatedAtmosphere from "./AnimatedAtmosphere";
+import "@/styles/atmosphere-animations.css";
 
 interface HeroSectionProps {
   onGetStartedClick: () => void;
@@ -15,10 +17,10 @@ const HeroSection = ({ onGetStartedClick }: HeroSectionProps) => {
 
   return (
     <section className="min-h-screen bg-black pt-20 flex items-end relative overflow-hidden">
-      {/* Animated Wave Background */}
+      {/* Animated Atmospheric Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-blue-600/10"></div>
-        <div className="wave-animation"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-950/30 via-black to-blue-900/20"></div>
+        <AnimatedAtmosphere />
       </div>
       
       <div className="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-[120px] py-32 relative z-10">
