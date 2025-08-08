@@ -25,8 +25,8 @@ const Navigation = ({ onGetStartedClick }: NavigationProps) => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[9999] h-20 transition-all duration-300 nav-blur`}>
-      <div className="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-[120px] h-full flex items-center justify-between">
+    <nav className={`fixed top-4 left-4 right-4 z-[9999] h-16 transition-all duration-300`}>
+      <div className="max-w-screen-xl mx-auto bg-black/70 backdrop-blur-md border border-white/10 rounded-full h-full px-8 md:px-12 lg:px-16 flex items-center justify-between shadow-2xl">
         {/* Logo and Navigation */}
         <div className="flex items-center space-x-12">
           <div className="flex-shrink-0">
