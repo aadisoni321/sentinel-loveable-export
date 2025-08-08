@@ -1,160 +1,63 @@
-/* Sentinel COOL effect - Elegant holographic + neon glow
-   Uses Tailwind semantic tokens via CSS variables.
-   GPU-accelerated, reduced-motion friendly.
-*/
+/* Sentinel Simple Gradient Hover Effect */
 
 .sentinel-holo {
   --mx: 0.5; /* mouse x (0..1) */
   --my: 0.5; /* mouse y (0..1) */
   position: relative;
   display: inline-block;
-  will-change: transform, filter;
-  transition: transform 500ms cubic-bezier(0.22,1,0.36,1),
-              letter-spacing 500ms cubic-bezier(0.22,1,0.36,1),
-              filter 500ms cubic-bezier(0.22,1,0.36,1),
-              text-shadow 500ms cubic-bezier(0.22,1,0.36,1);
-  text-shadow: 0 6px 24px hsl(var(--primary) / 0.15);
+  will-change: background, color;
+  transition: all 600ms cubic-bezier(0.22,1,0.36,1);
+  color: white;
   cursor: pointer;
 }
 
 .sentinel-holo:hover {
-  transform: translate3d(0,-6px,0) scale(1.03);
-  letter-spacing: 0.05em;
-  filter: 
-    drop-shadow(0 15px 50px hsl(var(--electric-blue) / 0.5))
-    drop-shadow(0 0 60px hsl(var(--electric-blue) / 0.6))
-    brightness(1.15);
-  text-shadow: 
-    0 0 30px hsl(var(--electric-blue) / 0.9),
-    0 0 60px hsl(var(--electric-blue) / 0.6),
-    0 0 90px hsl(var(--electric-blue) / 0.3);
-}
-
-/* Holographic shimmer layer */
-.sentinel-holo::before {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
   background: linear-gradient(
-    calc(45deg + var(--mx) * 90deg),
-    transparent 30%,
-    hsl(var(--electric-blue) / 0.4) 50%,
-    hsl(var(--primary) / 0.6) 55%,
-    hsl(var(--electric-blue) / 0.4) 60%,
-    transparent 70%
+    45deg,
+    #3b82f6,
+    #6366f1,
+    #8b5cf6,
+    #a855f7,
+    #ec4899,
+    #f59e0b,
+    #10b981,
+    #06b6d4,
+    #3b82f6
   );
-  background-size: 200% 200%;
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
   -webkit-text-fill-color: transparent;
-  opacity: 0;
-  will-change: background-position, opacity;
-  transition: all 400ms ease-out;
+  animation: gradient-shift 3s ease-in-out infinite;
 }
 
-/* Flowing energy layer */
-.sentinel-holo::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    hsl(var(--electric-blue) / 0.3),
-    hsl(var(--primary) / 0.5),
-    hsl(var(--electric-blue) / 0.3),
-    transparent
-  );
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  opacity: 0;
-  will-change: background-position, opacity;
-  transition: all 400ms ease-out;
-}
-
-/* Hover animations */
-.sentinel-holo:hover::before { 
-  opacity: 0.8; 
-  animation: shimmer-flow 2s ease-in-out infinite;
-}
-
-.sentinel-holo:hover::after { 
-  opacity: 0.6; 
-  animation: energy-sweep 3s ease-in-out infinite;
-}
-
-/* Subtle pulsing effect */
-.sentinel-holo:hover {
-  animation: elegant-pulse 4s ease-in-out infinite;
-}
-
-@keyframes shimmer-flow {
-  0%, 100% { 
-    background-position: -100% 0%;
-    opacity: 0.3;
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
   }
-  50% { 
-    background-position: 200% 0%;
-    opacity: 0.8;
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
   }
 }
 
-@keyframes energy-sweep {
-  0% { 
-    background-position: -300% 0%;
-    opacity: 0;
-  }
-  30% {
-    opacity: 0.6;
-  }
-  70% {
-    opacity: 0.6;
-  }
-  100% { 
-    background-position: 300% 0%;
-    opacity: 0;
-  }
-}
-
-@keyframes elegant-pulse {
-  0%, 100% { 
-    transform: translate3d(0,-6px,0) scale(1.03);
-    filter: 
-      drop-shadow(0 15px 50px hsl(var(--electric-blue) / 0.5))
-      drop-shadow(0 0 60px hsl(var(--electric-blue) / 0.6))
-      brightness(1.15);
-  }
-  50% { 
-    transform: translate3d(0,-8px,0) scale(1.05);
-    filter: 
-      drop-shadow(0 20px 60px hsl(var(--electric-blue) / 0.7))
-      drop-shadow(0 0 80px hsl(var(--electric-blue) / 0.8))
-      brightness(1.25);
-  }
-}
-
-/* Respect reduced motion */
+/* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
-  .sentinel-holo,
-  .sentinel-holo::before,
-  .sentinel-holo::after { 
-    animation: none !important; 
-    transition: opacity 200ms ease !important; 
+  .sentinel-holo {
+    transition: color 200ms ease !important;
   }
-  .sentinel-holo:hover { 
-    transform: none; 
-    letter-spacing: normal; 
-    filter: none; 
-    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
-  }
-  .sentinel-holo:hover::before,
-  .sentinel-holo:hover::after { 
-    opacity: 0.3; 
+  
+  .sentinel-holo:hover {
+    animation: none !important;
+    background: linear-gradient(45deg, #3b82f6, #6366f1);
+    background-size: 100% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
