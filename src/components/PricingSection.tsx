@@ -168,13 +168,6 @@ const PricingSection = () => {
 
             <div className="relative flex flex-col gap-4 mt-auto">
               <Button variant="secondary" className="pricing-cta w-full h-11 bg-muted text-foreground hover:bg-muted/80">Get Sentinel</Button>
-              <div aria-hidden className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground invisible">
-                <Badge variant="outline">Apple Pay</Badge>
-                <Badge variant="outline">PayPal</Badge>
-                <Badge variant="outline">Visa</Badge>
-                <Badge variant="outline">Mastercard</Badge>
-                <Badge variant="outline">Amex</Badge>
-              </div>
             </div>
           </article>
 
@@ -206,14 +199,6 @@ const PricingSection = () => {
 
             <div className="relative flex flex-col gap-4 mt-auto">
               <Button className="pricing-cta px-5 h-11">Get started</Button>
-              {/* Payment badges (textual for now to avoid extra assets) */}
-              <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                <Badge variant="outline" className="payment-badge">Apple Pay</Badge>
-                <Badge variant="outline" className="payment-badge">PayPal</Badge>
-                <Badge variant="outline" className="payment-badge">Visa</Badge>
-                <Badge variant="outline" className="payment-badge">Mastercard</Badge>
-                <Badge variant="outline" className="payment-badge">Amex</Badge>
-              </div>
             </div>
           </article>
         </div>
