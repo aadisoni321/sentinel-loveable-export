@@ -332,21 +332,6 @@ body.scroll-locked {
   overflow: hidden;
 }
 
-/* Remove all rounded corners globally */
-.btn-primary, .btn-secondary, button, input, textarea, select, div[class*="rounded"] {
-  border-radius: 0 !important;
-}
-
-@layer base {
-  * {
-    @apply border-border;
-    border-radius: 0 !important;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-}
 
 /* Gradient text utility and tokens */
 @layer base {
