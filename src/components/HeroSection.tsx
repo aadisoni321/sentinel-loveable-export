@@ -32,7 +32,13 @@ const HeroSection = ({ onGetStartedClick }: HeroSectionProps) => {
               <div className="inline-flex items-center">
                 <span className="text-xl mr-2">⚡</span>
                 <span className="text-white text-sm font-medium">
-                  Sentinel Is Live! Start Saving.
+                  Sentinel Is Live! Start Saving. 
+                  <button 
+                    onClick={() => scrollToSection("pricing")}
+                    className="text-blue-400 hover:text-blue-300 transition-colors duration-200 ml-1 underline cursor-pointer"
+                  >
+                    Explore Now →
+                  </button>
                 </span>
               </div>
             </div>
