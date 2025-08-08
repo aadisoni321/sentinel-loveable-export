@@ -1,4 +1,4 @@
-/* Sentinel HOLO effect - interactive prism + slice shimmer
+/* Sentinel SUPER COOL effect - Ultra enhanced holographic + neon + chromatic aberration
    Uses Tailwind semantic tokens via CSS variables.
    GPU-accelerated, reduced-motion friendly.
 */
@@ -9,94 +9,155 @@
   position: relative;
   display: inline-block;
   will-change: transform, filter;
-  transition: transform 280ms cubic-bezier(0.22,1,0.36,1),
-              letter-spacing 280ms cubic-bezier(0.22,1,0.36,1),
-              filter 280ms cubic-bezier(0.22,1,0.36,1);
+  transition: transform 400ms cubic-bezier(0.22,1,0.36,1),
+              letter-spacing 400ms cubic-bezier(0.22,1,0.36,1),
+              filter 400ms cubic-bezier(0.22,1,0.36,1),
+              text-shadow 400ms cubic-bezier(0.22,1,0.36,1);
   text-shadow: 0 6px 24px hsl(var(--primary) / 0.15);
+  cursor: pointer;
 }
 
 .sentinel-holo:hover {
-  transform: translate3d(0,-2px,0) scale(1.01);
-  letter-spacing: 0.02em;
-  filter: drop-shadow(0 12px 40px hsl(var(--primary) / 0.35));
+  transform: translate3d(0,-8px,0) scale(1.05) rotateX(5deg);
+  letter-spacing: 0.08em;
+  filter: 
+    drop-shadow(0 20px 60px hsl(var(--primary) / 0.6))
+    drop-shadow(0 0 80px hsl(var(--electric-blue) / 0.8))
+    brightness(1.2)
+    contrast(1.3);
+  text-shadow: 
+    0 0 20px hsl(var(--electric-blue) / 0.8),
+    0 0 40px hsl(var(--electric-blue) / 0.6),
+    0 0 80px hsl(var(--electric-blue) / 0.4),
+    2px 0 0 #ff0040,
+    -2px 0 0 #00ffff,
+    0 2px 0 #40ff00,
+    0 -2px 0 #ff4000;
 }
 
-/* HOLO prism layer */
+/* Chromatic aberration layer */
 .sentinel-holo::before {
   content: attr(data-text);
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: conic-gradient(from calc(var(--mx) * 360deg) at calc(var(--mx) * 100%) calc(var(--my) * 100%),
-    hsl(var(--primary) / 0.0),
-    hsl(var(--primary) / 0.35),
-    hsl(var(--accent) / 0.5),
-    hsl(var(--primary) / 0.35),
-    hsl(var(--primary) / 0.0));
-  background-size: 150% 150%;
+  color: #ff0040;
   mix-blend-mode: screen;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
   opacity: 0;
-  will-change: background-position, opacity;
+  will-change: transform, opacity;
+  transition: all 300ms ease-out;
 }
 
-/* Sliced shimmer layer */
+/* Neon glow layer */
 .sentinel-holo::after {
   content: attr(data-text);
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent 0 8px,
-      hsl(var(--primary) / 0.18) 8px 9px,
-      transparent 9px 16px
-    ),
-    linear-gradient(120deg,
-      transparent 20%,
-      hsl(var(--primary) / 0.15) 45%,
-      hsl(var(--accent) / 0.25) 50%,
-      hsl(var(--primary) / 0.15) 55%,
-      transparent 80%);
-  background-size: 100% 100%, 200% 100%;
-  background-position: 0 0, calc((var(--mx) - 0.5) * 200%) 0%;
-  mix-blend-mode: screen;
+  background: linear-gradient(
+    calc(var(--mx) * 360deg),
+    #ff0040,
+    #00ffff,
+    #40ff00,
+    #ff4000,
+    #8000ff,
+    #ff0040
+  );
+  background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
   opacity: 0;
   will-change: background-position, opacity;
+  transition: all 300ms ease-out;
+}
+
+/* Additional cyber layer for extra coolness */
+.sentinel-holo {
+  position: relative;
+}
+
+.sentinel-holo:before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  color: #00ffff;
+  opacity: 0;
+  transform: translate3d(3px, 0, 0);
+  transition: all 300ms ease-out;
 }
 
 /* Hover animations */
-.sentinel-holo:hover::before { opacity: 1; animation: holo-rotate 6s linear infinite; }
-.sentinel-holo:hover::after { opacity: 1; animation: slice-jitter 900ms steps(14, end) infinite alternate; }
-
-@keyframes holo-rotate {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+.sentinel-holo:hover::before { 
+  opacity: 0.7; 
+  animation: cyber-glitch 150ms steps(2, end) infinite;
+  transform: translate3d(2px, -1px, 0);
 }
 
-@keyframes slice-jitter {
-  0% { transform: translate3d(0,0,0); }
-  20% { transform: translate3d(1px,-1px,0); }
-  40% { transform: translate3d(-1px,1px,0); }
-  60% { transform: translate3d(1px,0,0); }
-  80% { transform: translate3d(-1px,0,0); }
-  100% { transform: translate3d(0,0,0); }
+.sentinel-holo:hover::after { 
+  opacity: 0.9; 
+  animation: neon-pulse 1.5s ease-in-out infinite alternate,
+             rainbow-shift 3s linear infinite;
+}
+
+/* Additional pulsing border effect */
+.sentinel-holo:hover {
+  animation: mega-pulse 2s ease-in-out infinite;
+}
+
+@keyframes cyber-glitch {
+  0% { transform: translate3d(2px, -1px, 0); color: #ff0040; }
+  33% { transform: translate3d(-2px, 1px, 0); color: #00ffff; }
+  66% { transform: translate3d(1px, -2px, 0); color: #40ff00; }
+  100% { transform: translate3d(-1px, 2px, 0); color: #ff4000; }
+}
+
+@keyframes neon-pulse {
+  0% { 
+    opacity: 0.6;
+    filter: brightness(1) saturate(1);
+  }
+  100% { 
+    opacity: 1;
+    filter: brightness(1.5) saturate(2);
+  }
+}
+
+@keyframes rainbow-shift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes mega-pulse {
+  0%, 100% { 
+    transform: translate3d(0,-8px,0) scale(1.05) rotateX(5deg);
+  }
+  50% { 
+    transform: translate3d(0,-12px,0) scale(1.08) rotateX(8deg);
+  }
 }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .sentinel-holo,
   .sentinel-holo::before,
-  .sentinel-holo::after { animation: none !important; transition: none !important; }
-  .sentinel-holo:hover { transform: none; letter-spacing: normal; filter: none; }
+  .sentinel-holo::after { 
+    animation: none !important; 
+    transition: opacity 200ms ease !important; 
+  }
+  .sentinel-holo:hover { 
+    transform: none; 
+    letter-spacing: normal; 
+    filter: none; 
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  }
   .sentinel-holo:hover::before,
-  .sentinel-holo:hover::after { opacity: 0; }
+  .sentinel-holo:hover::after { 
+    opacity: 0.3; 
+  }
 }
