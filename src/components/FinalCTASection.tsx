@@ -1,3 +1,4 @@
+
 const FinalCTASection = () => {
   return (
     <section className="bg-pure-black border-t border-white/10 py-20 px-4 md:px-8 lg:px-[120px]">
@@ -12,7 +13,7 @@ const FinalCTASection = () => {
 
         {/* Right Side CTA Button */}
         <div>
-          <button className="bg-electric-blue text-pure-white px-16 py-4 text-lg font-semibold hover:bg-blue-hover hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-electric-blue/30">
+          <button className="bg-electric-blue text-pure-white px-24 py-4 text-lg font-semibold hover:bg-blue-hover hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-electric-blue/30">
             Get Sentinel →
           </button>
         </div>
