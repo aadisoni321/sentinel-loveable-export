@@ -37,7 +37,7 @@ const PrivacySecuritySection = () => {
   }, []);
 
   return (
-    <section className="bg-pure-black py-[120px] px-4 md:px-8 lg:px-[120px] privacy-section">
+    <section id="privacy-security" className="bg-pure-black py-[120px] px-4 md:px-8 lg:px-[120px] privacy-section">
       <div className="max-w-[1200px] mx-auto">
         {/* Header */}
         <div className="text-center mb-20">

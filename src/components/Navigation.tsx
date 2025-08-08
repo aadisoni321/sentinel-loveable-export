@@ -44,7 +44,7 @@ const Navigation = ({ onGetStartedClick }: NavigationProps) => {
               Product
             </button>
             <button 
-              onClick={() => scrollToSection("security")}
+              onClick={() => scrollToSection("privacy-security")}
               className="text-base font-medium text-gray-300 hover:text-white transition-colors duration-300"
             >
               Security
